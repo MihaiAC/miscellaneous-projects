@@ -1,6 +1,6 @@
 from django import forms
-
 from .models import Comment
+
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -9,5 +9,5 @@ class CommentForm(forms.ModelForm):
         labels = {
             "user_name": "Your Name",
             "user_email": "Your Email",
-            "text": "Your Comment"
+            "text": "Your Comment",
         }

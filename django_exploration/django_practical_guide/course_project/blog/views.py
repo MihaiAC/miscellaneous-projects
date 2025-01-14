@@ -1,11 +1,11 @@
-from datetime import date
 from django.shortcuts import render
-from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
-from .models import Post, Tag, Author
+from django.http import HttpResponseRedirect
+from .models import Post
 from django.views.generic import ListView
 from .forms import CommentForm
 from django.views import View
 from django.urls import reverse
+
 
 class StartingPageView(ListView):
     template_name = "blog/index.html"
@@ -18,11 +18,13 @@ class StartingPageView(ListView):
         data = queryset[:3]
         return data
 
+
 class AllPostsView(ListView):
     template_name = "blog/all-posts.html"
     model = Post
     ordering = ["-date"]
     context_object_name = "all_posts"
+
 
 # Automatically searches by slug and raises 404 if not found.
 class SinglePostView(View):
@@ -32,9 +34,8 @@ class SinglePostView(View):
             is_saved_for_later = str(post_id) in stored_posts
         else:
             is_saved_for_later = False
-        
-        return is_saved_for_later
 
+        return is_saved_for_later
 
     def get(self, request, slug):
         post = Post.objects.get(slug=slug)
@@ -44,12 +45,11 @@ class SinglePostView(View):
             "tags": post.tag.all(),
             "comment_form": CommentForm(),
             "comments": post.comments.all().order_by("-id"),
-            "saved_for_later": self.is_stored_post(request, post.id)
+            "saved_for_later": self.is_stored_post(request, post.id),
         }
 
-
         return render(request, "blog/post-detail.html", context)
-    
+
     def post(self, request, slug):
         comment_form = CommentForm(request.POST)
         post = Post.objects.get(slug=slug)
@@ -58,18 +58,19 @@ class SinglePostView(View):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
-            
+
             return HttpResponseRedirect(reverse("single-post-page", args=[slug]))
-        
+
         context = {
             "post": post,
             "tags": post.tag.all(),
             "comment_form": CommentForm(),
             "comments": post.comments.all().order_by("-id"),
-            "saved_for_later": self.is_stored_post(request, post.id)
+            "saved_for_later": self.is_stored_post(request, post.id),
         }
 
         return render(request, "blog/post-detail.html", context)
+
 
 class ReadLaterView(View):
     # Retrieve the stored posts.
@@ -84,7 +85,7 @@ class ReadLaterView(View):
             posts = Post.objects.filter(id__in=stored_posts)
             context["posts"] = posts
             context["has_posts"] = True
-        
+
         return render(request, "blog/stored-posts.html", context)
 
     def post(self, request):
@@ -92,7 +93,7 @@ class ReadLaterView(View):
 
         if stored_posts is None:
             stored_posts = []
-        
+
         post_id = request.POST["post_id"]
 
         if post_id not in stored_posts:
@@ -100,5 +101,5 @@ class ReadLaterView(View):
         else:
             stored_posts.remove(post_id)
         request.session["stored_posts"] = stored_posts
-        
+
         return HttpResponseRedirect("/")
