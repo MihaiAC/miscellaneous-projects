@@ -14,3 +14,5 @@ Setting box-sizing for all elements (see MDN)
 
 top right bottom left; top right (top right)
 margin: 0 auto
+
+Blocks fill the available inline space of the parent element by default.
