@@ -31,3 +31,22 @@ Column direction is the reverse of this.
 `flex-wrap: wrap`
 `flex-direction: colummn|row`
 Flex items + auto-margins.
+
+Flex-grow, flex-shring and flex-basis
+flex: auto = flex 1 1 auto;
+
+flex:direction column with flex:1 => boxes collapse onto themselves as a div has default height 0; fix: flex: 1 1 auto;
+
+Align: each item can move along the secondary axis without interfering with other items. Justify cannot do that. => different values available for the two properties. Shish kebab vs cocktail wieners analogy.
+
+Elements have minimum width. For text, it's the length of the longest word.
+
+min-width: 0px can be useful sometimes.
+
+Gap
+
+Space-between: elem1 - space - elem2 - space - elem3
+Space-around: space/2 - elem1 - space - elem2 - space - elem3 - space/2
+Space-evenly: space - elem1 - space - elem2 - space - elem3 - space
+
+`ul {margin: 0; padding: 0;}` (why justify-content was not working)
