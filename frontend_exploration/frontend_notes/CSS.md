@@ -17,23 +17,31 @@ Center horizontally: `margin: 0 auto`
 
 Blocks fill the available inline space of the parent element by default.
 
+`height: 100vh` -> element will be as tall as the entire height of the browser viewport = useful for full-screen sections
+
+#### Li ####
+`list-style-type: none;` = remove bullet points;
+
+#### a ####
+`text-decoration: none;` = remove underline;
+
+
 ### Flexbox ###
 
 Flex container = any element with `display: flex`
 Flex item = element inside a flex container
 Some properties go on flex container, others on the flex items.
 
-For row direction:
-`justify-content:center` equivalent to `margin: 0 auto`
-`align-items: center` vertical alignment
-Column direction is the reverse of this.
-
+Main axis (row-horizontal): `justify-content:center` equivalent to `margin: 0 auto`
+Secondary axis (row-vertical):`align-items: center` vertical alignment
+Column flex-direction rotates the axes by 90 deg clockwise.
 `flex-wrap: wrap`
 `flex-direction: colummn|row`
 Flex items + auto-margins.
 
-Flex-grow, flex-shring and flex-basis
+Flex-grow, flex-shrink and flex-basis
 flex: auto = flex 1 1 auto;
+flex-shrink: 0 == prevents the element from being squashed == cannot be shrinked at all (IIUC)
 
 flex:direction column with flex:1 => boxes collapse onto themselves as a div has default height 0; fix: flex: 1 1 auto;
 
@@ -50,3 +58,5 @@ Space-around: space/2 - elem1 - space - elem2 - space - elem3 - space/2
 Space-evenly: space - elem1 - space - elem2 - space - elem3 - space
 
 `ul {margin: 0; padding: 0;}` (why justify-content was not working)
+
+flex: 1 take space
