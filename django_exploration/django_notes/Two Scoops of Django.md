@@ -10,3 +10,7 @@ No import *
 
 ESLint for Javascript
 
+
+#### Ch.2 ####
+Use PostgreSQL when developing.
+conda vs pip + virtualenv.
