@@ -24,6 +24,16 @@ Blocks fill the available inline space of the parent element by default.
 
 #### a ####
 `text-decoration: none;` = remove underline;
+```
+a,
+a:link,
+a:hover,
+a:visited,
+a:active {
+text-decoration: none;
+color: white;
+}
+```
 
 
 ### Flexbox ###
