@@ -35,7 +35,7 @@ from_file_path = args[1]
 if(os.path.isfile(from_file_path)):
     # Read input from file.
     f = open(from_file_path,'r')
-    content = f.read().decode('utf-8')
+    content = f.read()
     f.close()
 
     # Extract the hidden word from the input (if it exists).

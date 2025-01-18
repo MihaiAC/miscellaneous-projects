@@ -40,7 +40,7 @@ if(os.path.isfile(from_file_path) and len(word_to_hide) > 0):
     # Preamble for iteration.
     step = int(len(content)/len(ls))
     offset = 0
-    content = unicode(content)
+    content = str(content)
 
     # Save each zero-width sequence corresponding to a character to a specific place in the input.
     # We can be smarter and save them semi-randomly but we'll keep it simple.
@@ -50,7 +50,7 @@ if(os.path.isfile(from_file_path) and len(word_to_hide) > 0):
         offset += len(ls[ii])
 
     # Overwrite old file with modified input.
-    f = open(to_file_path,'w')
+    f = open(to_file_path,'wb')
     f.write(content.encode('utf-8'))
     f.close()
     
