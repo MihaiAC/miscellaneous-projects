@@ -4,6 +4,25 @@ RPS = ["Rock", "Paper", "Scissors"];
 humanScore = 0;
 computerScore = 0;
 
+const humanScoreElement = document.querySelector(".playerScore");
+const computerScoreElement = document.querySelector(".computerScore");
+
+const buttons_element = document.querySelector(".buttons");
+buttons_element.addEventListener('click', (event) => {
+    let target = event.target;
+    switch (target.id) {
+        case 'btnRock':
+            playRound(RPS[0]);
+            break;
+        case 'btnPaper':
+            playRound(RPS[1]);
+            break;
+        case 'btnScissors':
+            playRound(RPS[2]);
+            break;
+    }
+})
+
 function getComputerChoice() {
     choice = Math.random()
     console.log(choice)
@@ -25,8 +44,7 @@ function getHumanChoice() {
     }
 }
 
-function playRound(humanChoice, computerChoice) {
-    // Human wins.
+function calculateRoundWinner(humanChoice, computerChoice) {
     if ((humanChoice === RPS[0] && computerChoice === RPS[2]) ||
         (humanChoice === RPS[1] && computerChoice === RPS[0]) ||
         (humanChoice === RPS[2] && computerChoice === RPS[1])) {
@@ -40,26 +58,23 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame() {
-    for (let index = 0; index < 5; index++) {
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
+function playRound(humanChoice) {
+    let computerChoice = getComputerChoice();
+    calculateRoundWinner(humanChoice, computerChoice);
 
-        console.log(`Human score: ${humanScore}; computer score: ${computerScore}`)
+    if (humanScore === 5 || computerScore === 5) {
+        if (humanScore > computerScore) {
+            alert("You won!");
+        } else if (humanScore === computerScore) {
+            alert("You tied!");
+        } else {
+            alert("You lost!");
+        }
+        humanScore = 0;
+        computerScore = 0;
     }
 
-    if (humanScore > computerScore) {
-        alert("You won!");
-    } else if (humanScore === computerScore) {
-        alert("You tied!");
-    } else {
-        alert("You lost!");
-    }
-
-    humanScore = 0;
-    computerScore = 0;
-
+    // Update score display.
+    computerScoreElement.textContent = String(computerScore);
+    humanScoreElement.textContent = String(humanScore);
 }
-
-playGame()
