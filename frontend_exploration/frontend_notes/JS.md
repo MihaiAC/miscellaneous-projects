@@ -6,6 +6,7 @@ new Set(), in -> .has(elem)
 let = variable available only in current block
 n1, n2 = n2, n1 -> `[n1, n2] = [n2, n1]`
 Number.isInteger
+arr. filter, map, reduce, splice, slice, concat, forEach, indexOf (uses `===`, doesn't work with NaN), includes (works with NaN), find (returns undefined), findIndex, findLastIndex, sort, reverse, split, join, Array.isArray
 
 ### Web usage basics ###
 
