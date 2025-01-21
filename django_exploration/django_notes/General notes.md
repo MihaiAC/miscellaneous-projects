@@ -60,6 +60,8 @@ If blank = True, must provide a default value for non-string fields. For string 
 
 `get_absolute_url` override on model object
 
+Primary database + replica database + deploying to cloud and testing
+
 ### Serving uploaded files ###
 `MEDIA_ROOT = BASE_DIR / "uploads"` setting in settings.py to modify where files are saved
 `MEDIA_URL = "/user-media/"` = creating pre-amble for exposing files
@@ -98,4 +100,36 @@ STATIC_URL (things written by you) should be kept different from MEDIA_URL (user
 
 `STATIC_ROOT = BASE_DIR / "staticfiles"`
 `python manage.py collectstatic`
+
+# Testing #
+`SimpleTestCase` - no DB, `TestCase` - with DB
+`unittest.mock` - `Mock, MagicMock` = mocking objects
+			   - `patch` = mock code
+DRF: 
+```
+from rest_framework.test import APIClient
+client = ApiClient()
+res = client.get('/greetings/')
+```
+Then, you can use `res.status_code`, `res.data`, etc...
+
+Use either `tests.py` file or `tests` folder (with `__init__.py` in it), not both. Django looks for modules beginning with `test`.
+
+# Docker #
+psycopg2 binary on Alpine needs: `postgresql-client, build-base, postgresql-dev, musl-dev` - you seem to need a special build phase for this + Alpine doesn't seem to be recommended if you want to do this in a production environment. Use python slim instead.
+
+`PYTHONUNBUFFERED=1` -> don't buffer stdout and stderr
+`PYTHONDONTWRITEBYTECODE=1` -> prevents writing `.pyc` files to disk
+
+`depends_on` = ensures service starts, but doesn't ensure that the application on it is running => race condition possible
+DB service starting -> Django service starting; if Django finished initialising before the DB => not good
+Solution: make Django wait for db; can do outside Django with a bash script + healthcheck OR inside Django (google wait_for_db.py)
+
+`docker compose down -v` on dev if password doesn't work -> user misconfiguration?
+
+Is running Django in Docker really necessary?
+
+
+
+
 
