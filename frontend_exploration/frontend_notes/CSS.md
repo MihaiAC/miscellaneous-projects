@@ -1,7 +1,20 @@
+
+#### Selectors ####
 Ancestor combinator vs chaining vs child combinator (>)
+
+`>` = child; `+` = adjacent sibling; `~` = all siblings;
+`:focus, :hover, :active, :link, :visited`
+`:first-child, :last-child, :only-child, :nth-child, :first-of-type, :only-of-type, :empty, :not(X), :root` 
+`::marker, ::first-letter, ::first-line, ::selection, ::before, ::after`
+
+`img[src="puppy.jpg]` = attribute selector
+
 
 Cascade = what rules take priority if they all affect the same element.
 ID (#) > class (.) > type
+
+
+----------------------------------------------------
 
 Box model:
 - padding = space between content and border
@@ -70,3 +83,17 @@ Space-evenly: space - elem1 - space - elem2 - space - elem3 - space
 `ul {margin: 0; padding: 0;}` (why justify-content was not working)
 
 flex: 1 take space
+
+### Text###
+`system font stack`
+Have fallback if font is not available. Consider all major systems: macOS, Windows, Ubuntu, + phone OS's.
+Hosting own font may be slower than importing it from Google. Importing it comes with privacy issues (potential GDPR violation?).
+
+```
+width: ___px;
+white-space: nowrap;
+overflow: hidden; 
+text-overflow: ellipsis;
+```
+
+`overflow:scroll|auto` 
