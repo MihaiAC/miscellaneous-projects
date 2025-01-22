@@ -10,7 +10,6 @@ No import *
 
 ESLint for Javascript
 
-
 #### Ch.2 ####
 Use PostgreSQL when developing.
 conda vs pip + virtualenv.
@@ -24,3 +23,17 @@ App names = single word
 Apps = singular focus, small
 Common + uncommon app modules.
 
+#### Ch.5 ####
+Changing settings in prod => server restart.
+Keep secret keys out of version control (automatic tools can be incorporated in GitHub actions, e.g.: Trufflehog)
+No `local_settings.py` 
+Multiple settings files: `base, local, staging, test, production` + select it at server runtime OR set `DJANGO_SETTINGS_MODULE` 
+If multiple settings files => maybe multiple requirements files.
+Unset env vars after you no longer need them.
+
+!! Custom environment variable loading function -> throw custom error.
+Packages for this: `django-environ`, `django-configurations`
+
+`django-admin` for multiple setting files?
+
+For services in which environment variables do not work, is it possible to encrypt/decrypt the config files with an environment variable?

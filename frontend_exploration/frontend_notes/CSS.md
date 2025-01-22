@@ -1,4 +1,6 @@
 
+Preprocessors: SASS, LESS, Stylus
+
 #### Selectors ####
 Ancestor combinator vs chaining vs child combinator (>)
 
@@ -8,6 +10,7 @@ Ancestor combinator vs chaining vs child combinator (>)
 `::marker, ::first-letter, ::first-line, ::selection, ::before, ::after`
 
 `img[src="puppy.jpg]` = attribute selector
+Can use :root to declare global custom properties. (--x -> var(--x))
 
 
 Cascade = what rules take priority if they all affect the same element.
