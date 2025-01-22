@@ -30,6 +30,10 @@ body {
     padding: 0.2rem;
 }
 
+.calculator-display-input {
+    text-align: right;
+}
+
 button {
     width: 1rem;
     display: flex;
