@@ -100,3 +100,8 @@ text-overflow: ellipsis;
 ```
 
 `overflow:scroll|auto` 
+
+`cqh` - size based on element's container;
+
+### Forms ###
+`input:invalid, input:focus` + use outline instead of border for focus?

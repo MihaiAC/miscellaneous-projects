@@ -129,6 +129,13 @@ Solution: make Django wait for db; can do outside Django with a bash script + he
 
 Is running Django in Docker really necessary?
 
+# User Model #
+User model manager -> custom logic for creating objects (e.g: hash password)
+                  -> creating superUser;
+`BaseUserManager` 
+`from django.contrib.auth import get_user_model` -> will get default user model for the current app(?)
+
+`AUTH_USER_MODEL = "core.User"` 
 
 
 
