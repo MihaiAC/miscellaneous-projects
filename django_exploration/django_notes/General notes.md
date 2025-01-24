@@ -115,6 +115,11 @@ Then, you can use `res.status_code`, `res.data`, etc...
 
 Use either `tests.py` file or `tests` folder (with `__init__.py` in it), not both. Django looks for modules beginning with `test`.
 
+The test client = dummy web browser = simulate HTTP requests, see redirects + status codes + see that a given request is rendered by a Django template
+`from django.test import Client`
+Not a replacement for Selenium (tests rendered HTML + JS behaviour) - just checking that the correct templates are being rendered + that it receives correct context data.
+`RequestFactory` for testing view functions directly
+
 # Docker #
 psycopg2 binary on Alpine needs: `postgresql-client, build-base, postgresql-dev, musl-dev` - you seem to need a special build phase for this + Alpine doesn't seem to be recommended if you want to do this in a production environment. Use python slim instead.
 
@@ -136,6 +141,17 @@ User model manager -> custom logic for creating objects (e.g: hash password)
 `from django.contrib.auth import get_user_model` -> will get default user model for the current app(?)
 
 `AUTH_USER_MODEL = "core.User"` 
+
+# API #
+
+**What to document?**:
+- Available endpoints.
+- Supported methods.
+- Format of payloads (params + JSON format)
+- Authentication process
+=> generate documentation automatically.
+
+
 
 
 
