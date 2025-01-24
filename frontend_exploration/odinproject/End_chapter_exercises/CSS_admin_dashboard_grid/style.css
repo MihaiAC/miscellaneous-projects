@@ -1,10 +1,16 @@
+/* Debugging start */
+div,
+p,
+i {
+    border: 1px solid black;
+}
+
+/* Debugging end */
+
 body {
     margin: 0 0;
 }
 
-div {
-    border: 1px solid black;
-}
 
 .container {
     display: grid;
