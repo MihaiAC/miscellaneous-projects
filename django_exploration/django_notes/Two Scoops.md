@@ -37,3 +37,9 @@ Packages for this: `django-environ`, `django-configurations`
 `django-admin` for multiple setting files?
 
 For services in which environment variables do not work, is it possible to encrypt/decrypt the config files with an environment variable?
+
+### Ch.6 ###
+Django abstract base class for common fields?
+Custom save and delete methods -> won't be called by RunPython.
+Always back up data before a migration.
+Can take a while if you have a lot of data.
