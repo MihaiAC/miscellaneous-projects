@@ -118,4 +118,11 @@ It calculates container-width/150px -> number of cols -> sets col width to maxim
 `order` = in case you don't explicitly position the elements;
 
 `grid-template`: `grid-template-row` dimensions / `grid-template-col` dimensions
+`grid-auto-rows` = for auto_fit columns;
+
+### Box-shadow ###
+- horizontal offset: negative -> left, positive -> right;
+- vertical offset: negative -> on top, positive -> bottom;
+- blur;
+- color;
 
