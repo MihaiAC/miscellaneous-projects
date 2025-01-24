@@ -113,3 +113,6 @@ text-overflow: ellipsis;
 Auto_fit returns the highest positive integer that doesn't overflow the grid.
 It calculates container-width/150px -> number of cols -> sets col width to maximum value allowed by minmax, in this case fills all the space (`1fr`)
 `auto-fill` takes into account grid items that don't exist but could be there (aka treats empty space as another cell?)
+
+`grid-column: 2 / span 3;`
+`order` = in case you don't explicitly position the elements;
