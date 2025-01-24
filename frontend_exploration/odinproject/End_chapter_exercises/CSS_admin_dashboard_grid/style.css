@@ -77,4 +77,60 @@ body {
 
 .content {
     grid-area: 2 / 2 / 3 / 3;
+
+    display: grid;
+    grid-template: minmax(2rem, 3rem) 1fr / 2fr 1fr;
+}
+
+.content-projects-par {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.content-announcements-par {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.content-projects-container {
+    grid-area: 2 / 1 / 8 / 2;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr))
+}
+
+.content-projects-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-actions {
+    align-self: flex-end;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.announcement-trending-container {
+    grid-area: 2 / 2 / 3 / 3;
+
+    display: grid;
+    grid-template-rows: 1fr minmax(2rem, 3rem) 1fr;
+}
+
+.announcements {
+    grid-row: 1 / 2;
+
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.trending-par {
+    grid-row: 2 / 3;
+}
+
+.trending {
+    grid-row: 3 / 4;
+
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
 }
