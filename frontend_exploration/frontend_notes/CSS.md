@@ -116,3 +116,6 @@ It calculates container-width/150px -> number of cols -> sets col width to maxim
 
 `grid-column: 2 / span 3;`
 `order` = in case you don't explicitly position the elements;
+
+`grid-template`: `grid-template-row` dimensions / `grid-template-col` dimensions
+
