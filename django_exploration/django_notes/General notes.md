@@ -149,10 +149,33 @@ User model manager -> custom logic for creating objects (e.g: hash password)
 - Supported methods.
 - Format of payloads (params + JSON format)
 - Authentication process
-=> generate documentation automatically.
+=> generate documentation automatically **drf-spectacular**
+
+`drf_spectacular.views.SpectacularAPIView | SpectacularSwaggerView`
 
 
+# DRF #
+Public tests = unauthenticated requests (i.e: creating a user)
+```
+from rest_framework.test import APIClient
+from rest_framework import status
+```
 
+```
+# Allows reverse("user:create")
+app_name = "user"
+urlpatterns = [path("create/", views.CreateUserView.as_view(), name="create")]
+```
 
+Authentication types supported by DRF:
+- basic = send username and password with each request -> bad.
+- token = use a token in the HTTP header for each request to the API;
+- OAuth2 (need 3rd party package)
+- session cookies;
+JWT does not seem to be natively supported, 3rd party package exists for it too though!
+token = database hit per login request, JWT with refresh token can alleviate this
 
+Token authentication: need to create a token serializer, view (`ObtainAuthToken`) then add to urls.
+
+`generics.RetrieveUpdateAPIView` = View for updating an authenticated user; permission_classes, authentication_classes, serializer_class, get_object
 

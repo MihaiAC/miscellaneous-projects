@@ -38,8 +38,33 @@ Packages for this: `django-environ`, `django-configurations`
 
 For services in which environment variables do not work, is it possible to encrypt/decrypt the config files with an environment variable?
 
-### Ch.6 ###
+### Ch.6 - Models###
 Django abstract base class for common fields?
 Custom save and delete methods -> won't be called by RunPython.
 Always back up data before a migration.
 Can take a while if you have a lot of data.
+
+Start with models representing a normalised database (google 1NF -> 4NF ).
+If denormalisation is necessary, try caching first.
+
+When to use `null vs blank`:
+- text fields: blank = True => stored as empty strings unless null=True and unique=True, then stored as NULL
+- images/files: no null, blank ok;
+- boolean, numbers, dates, keys, IP, many to many: both ok; if blank=True => also set null=true;
+
+BinaryField - if too large => save to file + FileField
+
+When saving numeric data from Python to Postgres, check that it fits.
+
+Model  `_meta` API.
+
+Model Manager = interface used when interacting with the database (through the ORM) - stored in `objects`?
+
+Rather than having big models, you can do:
+- Abstract classes representing behaviors that you can import into your models (e.g: Publishable, Timestampable, etc.)
+OR
+- Stateless helper functions.
+
+
+
+
