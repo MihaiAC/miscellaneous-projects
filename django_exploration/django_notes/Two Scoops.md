@@ -66,5 +66,10 @@ OR
 - Stateless helper functions.
 
 
+### Ch.7 ###
+`get_object_or_404()` = for getting single objects in Views;
+`django.core.exceptions.ObjectDoesNotExist` vs `ModelName.DoesNotExist`
+`ModelName.MultipleObjectsReturned`
+
 
 

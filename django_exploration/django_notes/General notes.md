@@ -120,6 +120,8 @@ The test client = dummy web browser = simulate HTTP requests, see redirects + st
 Not a replacement for Selenium (tests rendered HTML + JS behaviour) - just checking that the correct templates are being rendered + that it receives correct context data.
 `RequestFactory` for testing view functions directly
 
+Each test inside a TestCase subclass is run inside a transaction and then the DB is flushed.
+
 # Docker #
 psycopg2 binary on Alpine needs: `postgresql-client, build-base, postgresql-dev, musl-dev` - you seem to need a special build phase for this + Alpine doesn't seem to be recommended if you want to do this in a production environment. Use python slim instead.
 
@@ -142,6 +144,17 @@ User model manager -> custom logic for creating objects (e.g: hash password)
 
 `AUTH_USER_MODEL = "core.User"` 
 
+Adding a user as a foreign key.
+```python
+from django.conf import settings
+
+class Article(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+```
+
 # API #
 
 **What to document?**:
@@ -153,6 +166,16 @@ User model manager -> custom logic for creating objects (e.g: hash password)
 
 `drf_spectacular.views.SpectacularAPIView | SpectacularSwaggerView`
 
+`APIView` = focused around http methods, class method for each of them. Useful for non CRUD APIs - e.g: authentication, running jobs, using external APIs.
+
+`Viewsets` = focused around CRUD, map to Django models, use Routers to generate URLs;
+
+```
+router = DefaultRouter()
+router.register("recipes", views.RecipeViewSet)
+```
+Router will create API endpoints depending on what's declared in the view set.
+Then, you have to include(router.urls) to urlpatterns.
 
 # DRF #
 Public tests = unauthenticated requests (i.e: creating a user)

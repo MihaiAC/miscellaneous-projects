@@ -47,3 +47,22 @@ A DOM element can have only one onclick.
 Callback = function that is passed as an argument to another function.
 Callback parameter e = references the event, that contains some info about the trigger. e.g: `e.target.style.background = "blue"`
 
+### Objects ###
+```
+function Book(author, title) {
+	this.author = author;
+	this.title = title;
+	this.info = function() {
+		console.log(`${this.author} ${this.title}`);
+	}
+}
+book = new Book("Author", "Title");
+```
+All objects have a prototype object.
+`Object.getPrototypeOf(book) === Book.prototype;` = returns true;
+By attaching an attribute or function to a prototype, you attach it to all instances of the corresponding object.
+Also, every object inherits from Object, since: `Object.getPrototypeOf(Player.prototype) === Object.prototype` is true
+Aka, access to general object functions like: `.hasOwnProperty(propertyName) or .valueOf()`
+Inheriting: `Object.setPrototypeOf(Player.prototype, Person.prototype)` = should be done before object instantiation.
+
+
