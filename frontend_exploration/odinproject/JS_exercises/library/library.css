@@ -22,11 +22,22 @@ h1 {
     align-items: center;
 }
 
+.delete-btn {
+    background-color: rgb(255, 111, 111);
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
 ul {
-    gap: 2rem;
     list-style: none;
-    padding: 0 0;
+    padding: 1rem 0;
     border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(238, 238, 238);
 }
 
 li {

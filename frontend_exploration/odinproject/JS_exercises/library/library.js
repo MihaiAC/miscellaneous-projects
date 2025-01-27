@@ -10,20 +10,47 @@ const authorInput = document.getElementById("author");
 const publisherInput = document.getElementById("publisher");
 const yearInput = document.getElementById("year");
 
+var CURRENT_ID = 0;
+
 function Book(title, author, publisher, year) {
     this.title = title;
     this.author = author;
     this.publisher = publisher;
     this.year = year;
+    this.id = "Book " + CURRENT_ID.toString();
+    CURRENT_ID += 1;
+}
+
+Book.prototype.PUBLIC_ATTRS = ['title', 'author', 'publisher', 'year']
+
+function deleteBook(book_id) {
+    let ulElement = document.getElementById(book_id);
+    booksListDiv.removeChild(ulElement);
+
+    const bookIndex = myLibrary.findIndex(book => book.id === book_id);
+    if (bookIndex !== -1) {
+        myLibrary.splice(bookIndex, 1);
+    }
 }
 
 function displayBook(book) {
     let attributeList = document.createElement("ul");
-    for (const [key, value] of Object.entries(book)) {
-        let attribute = document.createElement("li");
-        attribute.textContent = value.toString();
-        attributeList.appendChild(attribute);
-    }
+    attributeList.setAttribute("id", book.id);
+    book.PUBLIC_ATTRS.forEach(attr => {
+        let listElem = document.createElement("li");
+        listElem.textContent = book[attr].toString();
+        attributeList.appendChild(listElem);
+    })
+
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = 'Delete book';
+    deleteBtn.setAttribute("class", "delete-btn");
+    deleteBtn.addEventListener("click", (e) => {
+        console.log("PRESSED");
+        deleteBook(book.id);
+    })
+    attributeList.appendChild(deleteBtn);
+
     booksListDiv.appendChild(attributeList);
 }
 
@@ -86,4 +113,4 @@ closeDialogBtn.addEventListener("click", (e) => {
 
 addBookToLibrary("The Lord of the Rings", "J.R.R.Tolkien", "Allen & Unwin", 1954);
 addBookToLibrary("Shogun", "James Clavell", "Hodder & Stoughton", 1975);
-displayBooks();
+
