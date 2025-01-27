@@ -17,8 +17,11 @@ function Book(title, author, publisher, year) {
     this.author = author;
     this.publisher = publisher;
     this.year = year;
+
     this.id = "Book " + CURRENT_ID.toString();
     CURRENT_ID += 1;
+
+    this.read = false;
 }
 
 Book.prototype.PUBLIC_ATTRS = ['title', 'author', 'publisher', 'year']
@@ -33,6 +36,17 @@ function deleteBook(book_id) {
     }
 }
 
+function toggleReadBook(book_id) {
+    const bookIndex = myLibrary.findIndex(book => book.id === book_id);
+    if (bookIndex !== -1) {
+        if (myLibrary[bookIndex].read) {
+            myLibrary[bookIndex].read = false;
+        } else {
+            myLibrary[bookIndex].read = true;
+        }
+    }
+}
+
 function displayBook(book) {
     let attributeList = document.createElement("ul");
     attributeList.setAttribute("id", book.id);
@@ -42,14 +56,33 @@ function displayBook(book) {
         attributeList.appendChild(listElem);
     })
 
+    // Add read checkbox
+    let checkBox = document.createElement("input");
+    checkBox.type = "checkbox";
+    checkBox.checked = false;
+    checkBox.addEventListener("click", (e) => {
+        toggleReadBook(book.id);
+        if (checkBox.checked) {
+            attributeList.style.backgroundColor = "rgb(203, 255, 120)";
+        } else {
+            attributeList.style.backgroundColor = "rgb(238, 238, 238)";
+        }
+    })
+    let label = document.createElement("label");
+    label.textContent = "Read";
+    label.appendChild(checkBox);
+    attributeList.appendChild(label);
+
+    // Add delete button
     let deleteBtn = document.createElement("button");
     deleteBtn.textContent = 'Delete book';
     deleteBtn.setAttribute("class", "delete-btn");
     deleteBtn.addEventListener("click", (e) => {
-        console.log("PRESSED");
         deleteBook(book.id);
     })
     attributeList.appendChild(deleteBtn);
+
+
 
     booksListDiv.appendChild(attributeList);
 }
