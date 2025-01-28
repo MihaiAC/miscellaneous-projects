@@ -65,4 +65,35 @@ Also, every object inherits from Object, since: `Object.getPrototypeOf(Player.pr
 Aka, access to general object functions like: `.hasOwnProperty(propertyName) or .valueOf()`
 Inheriting: `Object.setPrototypeOf(Player.prototype, Person.prototype)` = should be done before object instantiation.
 
+### Closures ###
+Inheritance with closure:
+```javascript
+function createPlayer (name, level) {
+  const user = createUser(name);
 
+  const increaseLevel = () => level++;
+  return Object.assign({}, user, { increaseLevel });
+}
+```
+Another one:
+```javascript
+function createPlayer (name, level) {
+  const { getReputation, giveReputation } = createUser(name);
+
+  const increaseLevel = () => level++;
+  return { name, getReputation, giveReputation, increaseLevel };
+}
+```
+Modules (wrapping in {} and invoking it):
+```javascript
+const calculator = (function () {
+  const add = (a, b) => a + b;
+  const sub = (a, b) => a - b;
+  const mul = (a, b) => a * b;
+  const div = (a, b) => a / b;
+  return { add, sub, mul, div };
+})();
+```
+The parentheses transform it into a function, which immediately gets called.
+
+Making it useful  = return an object containing the functions / variables inside.

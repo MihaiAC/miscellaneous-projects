@@ -202,3 +202,16 @@ Token authentication: need to create a token serializer, view (`ObtainAuthToken`
 
 `generics.RetrieveUpdateAPIView` = View for updating an authenticated user; permission_classes, authentication_classes, serializer_class, get_object
 
+Nested serializers are read-only by default.
+
+Serialization: object -> e.g: JSON data
+De-serialization: e.g: JSON data -> object
+
+Client sends data to an API endpoint -> Data is de-serialized and available as `validated_data` if de-serialization was successful -> custom create, update methods to actually create or update objects and save them to DB implicitly.
+
+### REST API course thoughts ###
+(Maybe include in repo README after)
+- App structure is a mess, you can't have a Recipe app with its corresponding model defined in another app. As far as I understood, apps should be package-like, in that you could import them in another application and re-use them?
+- The whole concepts of apps in Django is a bit weird. The naming is confusing, it seems to want to reinvent the wheel. Consider having a large app with submodules instead in subsequent projects.
+- Code re-usability (DRY). Test files would benefit from a test utilities folder. Instructor does address it though. Test files would also benefit from being able to create dummy model objects in a standardized manner. (TODO: improvement)
+- APIs pretty similar to each other, good practice writing the code before watching the video though.
