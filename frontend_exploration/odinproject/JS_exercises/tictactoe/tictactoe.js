@@ -56,21 +56,36 @@ const gameboard = (function () {
 })();
 
 const game = (function () {
+
+    function Player(name, symbol) {
+        this.name = name;
+        this.symbol = symbol;
+    }
+
     // Initialise board (on page load, once).
     const htmlBoard = document.getElementById("tictactoe");
+    let actionBtn = document.createElement("button");
     var boardButtons = [];
     let player1 = null;
     let player2 = null;
     let currentPlayer = null;
     let isGameFinished = false;
+    let isGameStarted = false;
     let nElementsSet = 0;
 
-
-    const initialiseGame = function (initPlayer1, initPlayer2) {
-        player1 = initPlayer1;
-        player2 = initPlayer2;
+    let dialog = document.getElementById("dialog");
+    let p1Input = document.getElementById("player1");
+    let p2Input = document.getElementById("player2");
+    let submitNames = document.getElementById("js-close");
+    submitNames.addEventListener("click", (e) => {
+        e.preventDefault();
+        player1 = new Player(p1Input.value, 'x');
+        player2 = new Player(p2Input.value, "o");
+        p1Input.value = '';
+        p2Input.value = '';
         currentPlayer = player1;
-    }
+        dialog.close();
+    })
 
     const resetGame = function () {
         [player1, player2, currentPlayer] = [null, null, null];
@@ -79,6 +94,23 @@ const game = (function () {
             btn.textContent = "";
         });
         isGameFinished = false;
+        isGameStarted = false;
+        nElementsSet = 0;
+    }
+
+    const startGame = function () {
+        dialog.showModal();
+    }
+
+    const actionButtonPress = function () {
+        if (!isGameStarted) {
+            startGame();
+            isGameStarted = true;
+            actionBtn.textContent = "Reset";
+        } else {
+            resetGame();
+            actionBtn.textContent = "Start";
+        }
     }
 
     // Make valid move and return result.
@@ -87,11 +119,7 @@ const game = (function () {
 
         if (result) {
             isGameFinished = true;
-            if (currentPlayer === player1) {
-                alert("Player 1 won!");
-            } else {
-                alert("Player 2 won!");
-            }
+            alert(`${currentPlayer.name} won!`);
         } else {
             nElementsSet += 1;
             if (nElementsSet === 9) {
@@ -117,7 +145,7 @@ const game = (function () {
             newBtn.classList.add(`cell`);
             newBtn.classList.add(`${rowIdx}${colIdx}`);
             newBtn.addEventListener('click', (e) => {
-                if (newBtn.textContent.trim() === "" && (!isGameFinished)) {
+                if (newBtn.textContent.trim() === "" && (!isGameFinished) && isGameStarted) {
                     newBtn.textContent = currentPlayer.symbol;
                     makeMove(rowIdx, colIdx);
                     swapPlayers();
@@ -128,21 +156,9 @@ const game = (function () {
         }
     }
 
-    let resetBtn = document.createElement('button');
-    resetBtn.textContent = "Reset";
-    resetBtn.addEventListener('click', () => resetGame());
-    resetBtn.classList.add("reset-btn");
-    htmlBoard.appendChild(resetBtn);
 
-    return { initialiseGame };
-
+    actionBtn.textContent = "Start";
+    actionBtn.addEventListener('click', () => actionButtonPress());
+    actionBtn.classList.add("action-btn");
+    htmlBoard.appendChild(actionBtn);
 })();
-
-function Player(symbol) {
-    this.symbol = symbol;
-}
-
-p1 = new Player("X");
-p2 = new Player("O");
-
-game.initialiseGame(p1, p2);
