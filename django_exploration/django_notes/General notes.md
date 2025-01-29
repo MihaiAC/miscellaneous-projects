@@ -209,6 +209,10 @@ De-serialization: e.g: JSON data -> object
 
 Client sends data to an API endpoint -> Data is de-serialized and available as `validated_data` if de-serialization was successful -> custom create, update methods to actually create or update objects and save them to DB implicitly.
 
+The `"-detail"` part is a convention used by DRF's default router to name the URL pattern for retrieving a single instance of a model. `reverse('appname:model-detail', args=[object_id])` = retrieve the URL corresponding to the model object with id `object-id`.
+
+`model-list` = retrieve all the instances of the model;
+
 ### REST API course thoughts ###
 (Maybe include in repo README after)
 - App structure is a mess, you can't have a Recipe app with its corresponding model defined in another app. As far as I understood, apps should be package-like, in that you could import them in another application and re-use them?

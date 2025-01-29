@@ -66,10 +66,31 @@ OR
 - Stateless helper functions.
 
 
-### Ch.7 ###
+### Ch.7 Queries and the DB layer ###
 `get_object_or_404()` = for getting single objects in Views;
-`django.core.exceptions.ObjectDoesNotExist` vs `ModelName.DoesNotExist`
+`django.core.exceptions.ObjectDoesNotExist` vs `ModelName.DoesNotExist` vs 
 `ModelName.MultipleObjectsReturned`
+
+Doing something like `for customer in Customer.objects.iterator()` is bad, as it retrieves objects from the DB one by one and can create race conditions => use query expressions.
+Aka example: `Customer.objects.filter(scoops_ordered__gt=F('store_visits'))`
+
+Processing the data in Python is slower than in the DB.
+
+If you need to write SQL, prefer `raw()` over `extra()`. Only do it if the ORM can't handle a query or you can do something more efficient (?). Examples:
+- Window functions, advanced joins, unions, groupbys.
+- Bulk inserts/updates.
+- DB-specific features (e.g: tsvector, tsquery in postgres)
+
+Indexing:
+- If it's used frequently (10-25% of all queries).
+- Can run tests to determine if indexing leads to an improvement in results.
+- `pg_stat_activity` to gauge usage
+
+Default ORM behaviour - autocommit (e.g: after every create/update etc). Can be bad for large sites.
+`ATOMIC_REQUESTS` set to true => all requests are wrapped in a transaction. 
+`transaction.non_atomic_requests()` = e.g: confirmation email then transaction is rolled back; with this decorator, behavior is back to autocommit inside that function and you can handle error states appropriately;
+Ideally, should use transactions for creating, modifying and deleting data.
+
 
 
 

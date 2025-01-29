@@ -97,3 +97,12 @@ const calculator = (function () {
 The parentheses transform it into a function, which immediately gets called.
 
 Making it useful  = return an object containing the functions / variables inside.
+
+### Classes ###
+`get propName(), set propName()` = they do have access to `this`;
+`class MyClass {constructor() {}, method1() {}, etc}`
+`new MyClass()` = create new obj;
+Can have static methods and fields.
+Public class fields.
+`#height` = private property, should not be referenced outside the class; can have private methods too, must have unique names within the class.
+Inheritance with `extends`
