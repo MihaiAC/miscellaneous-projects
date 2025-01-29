@@ -65,6 +65,7 @@ const game = (function () {
     // Initialise board (on page load, once).
     const htmlBoard = document.getElementById("tictactoe");
     let actionBtn = document.createElement("button");
+    let rematchBtn = null;
     var boardButtons = [];
     let player1 = null;
     let player2 = null;
@@ -96,6 +97,24 @@ const game = (function () {
         isGameFinished = false;
         isGameStarted = false;
         nElementsSet = 0;
+
+        // If rematch btn is shown, remove it.
+        if (rematchBtn !== null && htmlBoard.contains(rematchBtn)) {
+            htmlBoard.removeChild(rematchBtn);
+            rematchBtn = null;
+        }
+    }
+
+    const rematchGame = function () {
+        gameboard.startNewGame();
+        boardButtons.forEach(btn => {
+            btn.textContent = "";
+        });
+        isGameFinished = false;
+        isGameStarted = true;
+        nElementsSet = 0;
+
+        htmlBoard.removeChild(rematchBtn);
     }
 
     const startGame = function () {
@@ -126,7 +145,14 @@ const game = (function () {
                 isGameFinished = true;
                 alert("You tied!");
             }
-            return true;
+        }
+
+        if (isGameFinished) {
+            rematchBtn = document.createElement("button");
+            rematchBtn.textContent = "Rematch";
+            rematchBtn.addEventListener("click", () => rematchGame());
+            rematchBtn.classList.add("rematch-btn");
+            htmlBoard.appendChild(rematchBtn);
         }
     }
 
