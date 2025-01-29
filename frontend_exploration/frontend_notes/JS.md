@@ -106,3 +106,28 @@ Can have static methods and fields.
 Public class fields.
 `#height` = private property, should not be referenced outside the class; can have private methods too, must have unique names within the class.
 Inheritance with `extends`
+
+### ES6 Modules ###
+Default vs named exports
+Entrypoints
+
+### npm ###
+`package.json`
+`devDependencies vs dependencies`
+
+### webpack ###
+Provide entry point -> build dep graph -> combines all needed files
+`npm install --save-dev webpack webpack-cli`
+Dev dependencies = won't get added to the code the browser will run. e.g: webpack, testing
+`src` = for website code
+`dist` = where the src code gets built
+Need to write a `webpack.config.js` file.
+`npx webpack` = run command
+
+`html-webpack-plugin` for loading html
+`style-loader, css-loader` for loading css
+`html-loader` for images
+
+Webpack runs the loaders starting at the end(??) `use: ["second", "first"]`
+
+Importing a module for its side effects will only run its global code.
