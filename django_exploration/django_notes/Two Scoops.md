@@ -91,6 +91,11 @@ Default ORM behaviour - autocommit (e.g: after every create/update etc). Can be 
 `transaction.non_atomic_requests()` = e.g: confirmation email then transaction is rolled back; with this decorator, behavior is back to autocommit inside that function and you can handle error states appropriately;
 Ideally, should use transactions for creating, modifying and deleting data.
 
+### Ch.8 - function and class-based Views ###
+If you need to tinker a lot with it to make it a class-based View -> consider a function view.
+Keep logic out of urls.py. Keep business logic out of Views. Put it into model methods, manager methods and general utility helpers instead.
+Use URL namespaces (`tastings:detail`, not `tastings_detail`)
+
 
 
 

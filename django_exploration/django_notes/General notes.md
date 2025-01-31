@@ -71,6 +71,14 @@ from django.conf.urls.static import static
 from django.conf import settings```
 Importing the image: `<img src="{{ post.image.url }}/>"`
 
+`if settings.DEBUG` -> toggle where static files are served from based on the environment type;
+
+**`STATIC_URL`**: URL path used in templates and for linking static files.
+**`STATIC_ROOT`**: Directory path where static files are collected when running `collectstatic` (mainly for production).
+Same for media.
+
+`uuid.uuid4()` to generate a random file name when uploading (remove the extension before generating and re-add it after).
+
 ### Relations ###
 ForeignKey is used for one to many relations.
 OneToOneField...
@@ -212,6 +220,15 @@ Client sends data to an API endpoint -> Data is de-serialized and available as `
 The `"-detail"` part is a convention used by DRF's default router to name the URL pattern for retrieving a single instance of a model. `reverse('appname:model-detail', args=[object_id])` = retrieve the URL corresponding to the model object with id `object-id`.
 
 `model-list` = retrieve all the instances of the model;
+
+Creating a custom ViewSet action (e.g: for uploading an image).
+
+For uploading an image through the API web page:
+```python
+SPECTACULAR_SETTINGS = {
+"COMPONENT_SPLIT_REQUEST": True,
+}
+```
 
 ### REST API course thoughts ###
 (Maybe include in repo README after)
