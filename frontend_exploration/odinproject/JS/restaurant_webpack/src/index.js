@@ -1,12 +1,15 @@
 import "./style.css";
+import { generate_home } from "./generate_home_page";
+import { generate_menu } from "./generate_menu_page";
+import { generate_about } from "./generate_about_page";
 
-console.log("Hello There!");
+generate_home();
 
-function component() {
-    const element = document.createElement('div');
+let home_a = document.querySelector("#nav-home");
+home_a.addEventListener("click", generate_home);
 
-    // Lodash, currently included via a script, is required for this line to work
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+let menu_a = document.querySelector("#nav-menu");
+menu_a.addEventListener("click", generate_menu);
 
-    return element;
-  }
+let about_a = document.querySelector("#nav-about");
+about_a.addEventListener("click", generate_about);
