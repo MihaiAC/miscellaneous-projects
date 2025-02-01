@@ -1,5 +1,7 @@
 import "./style.css";
 
+console.log("Hello There!");
+
 function component() {
     const element = document.createElement('div');
 
@@ -8,5 +10,3 @@ function component() {
 
     return element;
   }
-
-  document.body.appendChild(component());

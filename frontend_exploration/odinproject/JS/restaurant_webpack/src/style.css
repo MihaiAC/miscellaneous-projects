@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 4rem;
   background-image: url("./assets/pizza.jpg");
   background-size: cover;
   background-position: center;
@@ -16,10 +16,43 @@ body {
 
 nav {
   display: flex;
-  margin: 4rem 4rem;
+  margin: 2rem auto;
   background-color: cornsilk;
-  opacity: 70%;
+  opacity: 90%;
   border-radius: 10px;
+  max-width: fit-content;
+  align-self: center;
+}
+
+#content {
+  background-color: cornsilk;
+  opacity: 90%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 0 4rem;
+  align-items: center;
+  gap: 2rem;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-proper {
+  max-width: 50cqw;
+}
+
+.review-author {
+  align-self: flex-end;
+  margin-right: 4rem;
+  font-style: italic;
+}
+
+#content h1 {
+  align-self: center;
 }
 
 a,
@@ -37,5 +70,4 @@ a:hover {
 a:hover {
   background-color: cornsilk;
   border: 1px solid rgb(85, 161, 122);
-  opacity: 50%;
 }
