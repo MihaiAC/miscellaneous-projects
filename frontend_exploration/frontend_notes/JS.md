@@ -118,6 +118,10 @@ Entrypoints
 ### webpack ###
 Provide entry point -> build dep graph -> combines all needed files
 `npm install --save-dev webpack webpack-cli`
+`npm install --save-dev html-webpack-plugin`
+`npm install --save-dev style-loader css-loader`
+
+
 Dev dependencies = won't get added to the code the browser will run. e.g: webpack, testing
 `src` = for website code
 `dist` = where the src code gets built
