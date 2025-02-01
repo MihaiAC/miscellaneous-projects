@@ -1,3 +1,41 @@
 body {
-  background-color: rebeccapurple;
+  margin: 0;
+  padding: 0;
+  background-image: url("./assets/pizza.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav {
+  display: flex;
+  margin: 4rem 4rem;
+  background-color: cornsilk;
+  opacity: 70%;
+  border-radius: 10px;
+}
+
+a,
+a:visited,
+a:focus,
+a:hover {
+  text-decoration: none;
+  color: black;
+  padding: 2rem 2rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+
+a:hover {
+  background-color: cornsilk;
+  border: 1px solid rgb(85, 161, 122);
+  opacity: 50%;
 }

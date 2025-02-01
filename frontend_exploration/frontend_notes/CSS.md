@@ -126,3 +126,7 @@ It calculates container-width/150px -> number of cols -> sets col width to maxim
 - blur;
 - color;
 
+### Resizing on hover trick ###
+Problem: Three divs inside a navbar, on hover add 1px red border. 
+When hovered, the whole navbar grows due to flex.
+Fix: `box-sizing: border-box; border: 1px solid transparent;` to the divs.
