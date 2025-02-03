@@ -96,6 +96,14 @@ If you need to tinker a lot with it to make it a class-based View -> consider a 
 Keep logic out of urls.py. Keep business logic out of Views. Put it into model methods, manager methods and general utility helpers instead.
 Use URL namespaces (`tastings:detail`, not `tastings_detail`)
 
+### Ch.9 - FBV Best practices ###
+Class-agnostic functionality. E.g: checking a user's permissions.
+Can transform them into decorators sometimes.
+Impose a hard limit on how many decorators your views can have.
+No CBVs guide - a lot of good points: https://spookylukey.github.io/django-views-the-right-way/dependency-injection.html
+
+
+
 
 
 

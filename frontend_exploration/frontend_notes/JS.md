@@ -135,3 +135,31 @@ Need to write a `webpack.config.js` file.
 Webpack runs the loaders starting at the end(??) `use: ["second", "first"]`
 
 Importing a module for its side effects will only run its global code.
+
+Custom command line scripts (in package.json) e.g: 
+```
+"scripts": {
+	"build": "webpack",
+	"dev": "webpack serve",
+	"deploy": "some complicated git command"
+}
+```
+Usage: `npm run build` or `npm run deploy` etc.
+
+Separate config scripts for dev and prod (instead of `webpack.config.js`)
+- `"build": "webpack --config webpack.prod.js"`;
+- `"dev": "webpack serve --config webpack.dev.js"`;
+
+Webpack-merge for when dev and prod scripts have common parts you don't want to repeat.
+Createapp.dev -> customizing a config file.
+
+### JSON ###
+`JSON.parse()` = transform JSON to a JS object;
+`JSON.stringify()` = transform JS object to JSON;
+
+### Linters and code formatters ###
+Include as project dependencies even if using the VScode extensions.
+
+### T.O.P. postponed projects (after React) ###
+TODO app: https://www.theodinproject.com/lessons/node-path-javascript-todo-list
+
