@@ -8,6 +8,12 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, "static"),
+      publicPath: "/static",
+    },
+  },
   module: {
     rules: [
       {
@@ -15,19 +21,11 @@ const config = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.svg$/,
-        use: "file-loader",
-      },
-      {
-        test: /\.png$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              mimetype: "image/png",
-            },
-          },
-        ],
+        test: /\.(png|jpg|svg)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "static/[name]-[hash][ext]",
+        },
       },
     ],
   },
