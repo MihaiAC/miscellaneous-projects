@@ -6,19 +6,42 @@ export class Carousel {
     this.navdots = this.carousel.querySelector(".nav-dots").children;
     this.interval = setInterval(() => this.selectNextImage(), 5000);
 
+    this.#addNextButtonListener();
+    this.#addPrevButtonListener();
+    this.#addNavDotsListeners();
+  }
+
+  #addNextButtonListener() {
     let nextBtn = this.carousel.querySelector(".next");
     nextBtn.addEventListener("click", (e) => {
       e.preventDefault();
       this.selectNextImage();
       this.resetTimer();
     });
+  }
 
+  #addPrevButtonListener() {
     let prevBtn = this.carousel.querySelector(".prev");
     prevBtn.addEventListener("click", (e) => {
       e.preventDefault();
       this.selectPreviousImage();
       this.resetTimer();
     });
+  }
+
+  #addNavDotsListeners() {
+    for (let index = 0; index < this.navdots.length; index++) {
+      const element = this.navdots[index];
+      element.addEventListener("click", (e) => {
+        e.preventDefault();
+        let activeImageIdx = this.getActiveImageIdx();
+        if (activeImageIdx != index) {
+          this.deactivateImage(activeImageIdx);
+          this.activateImage(index);
+          this.resetTimer();
+        }
+      });
+    }
   }
 
   getActiveImageIdx() {
