@@ -1,0 +1,14 @@
+h1 {
+  color: white;
+  background-color: black;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel {
+  min-height: 26rem;
+  background-color: gray;
+}
