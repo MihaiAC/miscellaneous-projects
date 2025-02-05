@@ -3,6 +3,20 @@ export class Carousel {
     this.carousel = document.querySelector(carousel_id);
     this.carouselInner = this.carousel.firstElementChild;
     this.interval = setInterval(() => this.selectNextImage(), 5000);
+
+    let nextBtn = this.carousel.querySelector(".next");
+    nextBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      this.selectNextImage();
+      this.resetTimer();
+    });
+
+    let prevBtn = this.carousel.querySelector(".prev");
+    prevBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      this.selectPreviousImage();
+      this.resetTimer();
+    });
   }
 
   getActiveImageIdx(images) {
