@@ -2,6 +2,7 @@ export class Carousel {
   constructor(carousel_id) {
     this.carousel = document.querySelector(carousel_id);
     this.carouselInner = this.carousel.firstElementChild;
+    this.interval = setInterval(() => this.selectNextImage(), 5000);
   }
 
   getActiveImageIdx(images) {
