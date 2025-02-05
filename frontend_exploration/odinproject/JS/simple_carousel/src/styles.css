@@ -62,3 +62,27 @@ body {
 .carousel-control-prev {
   min-width: 2rem;
 }
+
+.nav-dots {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: transparent;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #bbb;
+  border-color: #888;
+}

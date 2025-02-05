@@ -2,6 +2,8 @@ export class Carousel {
   constructor(carousel_id) {
     this.carousel = document.querySelector(carousel_id);
     this.carouselInner = this.carousel.firstElementChild;
+    this.images = this.carouselInner.children;
+    this.navdots = this.carousel.querySelector(".nav-dots").children;
     this.interval = setInterval(() => this.selectNextImage(), 5000);
 
     let nextBtn = this.carousel.querySelector(".next");
@@ -19,10 +21,10 @@ export class Carousel {
     });
   }
 
-  getActiveImageIdx(images) {
+  getActiveImageIdx() {
     let activeImageIdx = -1;
-    for (let index = 0; index < images.length; index++) {
-      if (images[index].classList.contains("active")) {
+    for (let index = 0; index < this.images.length; index++) {
+      if (this.images[index].classList.contains("active")) {
         activeImageIdx = index;
         break;
       }
@@ -45,38 +47,40 @@ export class Carousel {
   }
 
   selectNextImage() {
-    const images = this.carouselInner.children;
-    let activeImageIdx = this.getActiveImageIdx(images);
+    let activeImageIdx = this.getActiveImageIdx();
 
-    console.log(images[activeImageIdx].classList);
+    this.deactivateImage(activeImageIdx);
 
-    // Remove active from the current image.
-    images[activeImageIdx].classList.remove("active");
-
-    if (activeImageIdx < images.length - 1) {
+    if (activeImageIdx < this.images.length - 1) {
       activeImageIdx += 1;
     } else {
       activeImageIdx = 0;
     }
 
-    images[activeImageIdx].classList.add("active");
+    this.activateImage(activeImageIdx);
   }
 
   selectPreviousImage() {
-    const images = this.carouselInner.children;
-    let activeImageIdx = this.getActiveImageIdx(images);
+    let activeImageIdx = this.getActiveImageIdx();
 
-    console.log(images[activeImageIdx].classList);
-
-    // Remove active from the current image.
-    images[activeImageIdx].classList.remove("active");
+    this.deactivateImage(activeImageIdx);
 
     if (activeImageIdx > 0) {
       activeImageIdx -= 1;
     } else {
-      activeImageIdx = images.length - 1;
+      activeImageIdx = this.images.length - 1;
     }
 
-    images[activeImageIdx].classList.add("active");
+    this.activateImage(activeImageIdx);
+  }
+
+  deactivateImage(idx) {
+    this.images[idx].classList.remove("active");
+    this.navdots[idx].classList.remove("active");
+  }
+
+  activateImage(idx) {
+    this.images[idx].classList.add("active");
+    this.navdots[idx].classList.add("active");
   }
 }
