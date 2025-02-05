@@ -11,4 +11,16 @@ body {
 .carousel {
   min-height: 26rem;
   background-color: gray;
+  display: flex;
+}
+
+.carousel-inner {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.carousel-img {
+  object-fit: cover;
+  flex: 1;
 }
