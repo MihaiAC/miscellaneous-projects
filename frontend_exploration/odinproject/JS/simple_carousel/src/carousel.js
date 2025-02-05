@@ -24,6 +24,12 @@ export class Carousel {
     return activeImageIdx;
   }
 
+  // Called after the user presses one of the manual controls.
+  resetTimer() {
+    clearInterval(this.interval);
+    this.interval = setInterval(() => this.selectNextImage(), 5000);
+  }
+
   selectNextImage() {
     const images = this.carouselInner.children;
     let activeImageIdx = this.getActiveImageIdx(images);
@@ -37,6 +43,24 @@ export class Carousel {
       activeImageIdx += 1;
     } else {
       activeImageIdx = 0;
+    }
+
+    images[activeImageIdx].classList.add("active");
+  }
+
+  selectPreviousImage() {
+    const images = this.carouselInner.children;
+    let activeImageIdx = this.getActiveImageIdx(images);
+
+    console.log(images[activeImageIdx].classList);
+
+    // Remove active from the current image.
+    images[activeImageIdx].classList.remove("active");
+
+    if (activeImageIdx > 0) {
+      activeImageIdx -= 1;
+    } else {
+      activeImageIdx = images.length - 1;
     }
 
     images[activeImageIdx].classList.add("active");
