@@ -24,3 +24,11 @@ body {
   object-fit: cover;
   flex: 1;
 }
+
+.carousel-img {
+  display: none;
+}
+
+.carousel-img.active {
+  display: inline;
+}
