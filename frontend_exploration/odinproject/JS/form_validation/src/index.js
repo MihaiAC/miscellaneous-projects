@@ -1,8 +1,8 @@
 import "./styles.css";
 import { EmailValidator } from "./email_validation";
+import { PostcodeValidator } from "./postcode_validation";
 
 document.addEventListener("DOMContentLoaded", () => {
-  let form = document.querySelector("form");
-  console.log(form.children);
   window.emailValidator = new EmailValidator();
+  window.postcodeValidator = new PostcodeValidator();
 });
