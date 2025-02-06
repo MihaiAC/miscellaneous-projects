@@ -17,7 +17,7 @@ form {
   border-radius: 20px;
 }
 
-input[type="email"] {
+input {
   appearance: none;
 
   width: 100%;
