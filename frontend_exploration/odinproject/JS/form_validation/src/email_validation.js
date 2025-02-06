@@ -19,13 +19,17 @@ export class EmailValidator {
 
     this.form.addEventListener("submit", (event) => {
       // if the email field is invalid
-      if (!this.email.validity.valid) {
+      if (!this.isValid()) {
         // display an appropriate error message
         this.showError();
         // prevent form submission
         event.preventDefault();
       }
     });
+  }
+
+  isValid() {
+    return this.email.validity.valid;
   }
 
   showError() {

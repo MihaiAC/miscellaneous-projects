@@ -36,6 +36,10 @@ export class PasswordValidator {
     });
   }
 
+  isValid() {
+    return this.passwordIsValid() && this.confirmPasswordIsValid();
+  }
+
   validatePassword() {
     if (this.passwordIsValid()) {
       this.passwordError.textContent = "";
