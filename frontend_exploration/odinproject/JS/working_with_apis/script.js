@@ -21,10 +21,14 @@ class WeatherGetter {
   }
 
   async getWeatherData(location) {
-    const url = this.buildUrl(location);
-    let response = await fetch(url);
-    let jsonResponse = await response.json();
-    return jsonResponse;
+    try {
+      const url = this.buildUrl(location);
+      let response = await fetch(url);
+      let jsonResponse = await response.json();
+      return jsonResponse;
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
@@ -34,17 +38,34 @@ class Weather {
   static #cloudcover = document.getElementById("cloudcover");
   static #temp = document.getElementById("tempC");
 
-  constructor(resolvedAddress, conditions, cloudcover, temp) {
-    this.address = resolvedAddress;
-    this.conditions = conditions;
-    this.cloudcover = cloudcover;
-    this.tempC = (((temp - 32) * 5) / 9).toFixed(2);
-  }
-
-  displayWeather() {
-    Weather.#address.textContent = this.address;
-    Weather.#conditions.textContent = this.conditions;
-    Weather.#cloudcover.textContent = this.cloudcover + "%";
-    Weather.#temp.textContent = this.tempC + "°C";
+  static displayWeather(resolvedAddress, conditions, cloudcover, temp) {
+    Weather.#address.textContent = resolvedAddress;
+    Weather.#conditions.textContent = conditions;
+    Weather.#cloudcover.textContent = "Humidity: " + cloudcover + "%";
+    Weather.#temp.textContent =
+      "Temperature: " + (((temp - 32) * 5) / 9).toFixed(2) + "°C";
   }
 }
+
+async function getAndDisplayData(apiKey, location) {
+  try {
+    const weatherGetter = new WeatherGetter(apiKey);
+    const wData = await weatherGetter.getWeatherData(location);
+    Weather.displayWeather(
+      wData.resolvedAddress,
+      wData.days[0].conditions,
+      wData.days[0].cloudcover,
+      wData.days[0].temp
+    );
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+window.apiKey = "";
+const form = document.getElementById("locationForm");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const location = document.getElementById("location").value;
+  getAndDisplayData(window.apiKey, location);
+});
