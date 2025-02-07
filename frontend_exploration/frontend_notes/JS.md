@@ -163,3 +163,42 @@ Include as project dependencies even if using the VScode extensions.
 ### T.O.P. postponed projects (after React) ###
 TODO app: https://www.theodinproject.com/lessons/node-path-javascript-todo-list
 
+### Form validation in JS ###
+Can do a combination of constraint validation API + custom validation methods.
+MDN example.
+
+### Babel ###
+Can transpile modern JS features into ES6?
+
+### Callbacks and async code ###
+Convention: `function handleFile(error, file)` -> have error as first argument + handle it inside the function;
+
+Avoid callback hell == nesting functions declared on the fly. Declare them separately to make the code more readable.
+
+Callbacks = functions that will be called at a later time.
+
+Promises = when you need to await the result of an async function.
+`resolve(x), reject(x)` = solving a promise
+`.then(f(x))` = function that gets called after the promise is solved;
+`.catch(f(x))` = function that gets called if solving a promise encounters an error;
+`.finally(f(x))` = function that gets called regardless of how the promise is solved.
+
+CORS = cross-origin resource sharing
+Safe vs unsafe requests
+Safe request = safe method (GET, POST, HEAD) + safe headers (standard headers + allowed custom headers: Accept, Accept-Language, Content-Language, Content-Type);
+Server decides if the request is safe and adds the header "Access-Control-Allow-Origin"
+If you want to use unsafe headers/HTTP methods, must send a "preflight" request to the server to ask for permission to use them.
+```javascript
+fetch('url.url.com/api', {
+  mode: 'cors'
+});
+``` 
+The Fetch API
+
+Instead of then, catch, finally -> async and await;
+Async functions = syntactic sugar for Promises;
+Returning in an async function = resolving a promise.
+Awaiting = using then.
+Try/Catch
+
+

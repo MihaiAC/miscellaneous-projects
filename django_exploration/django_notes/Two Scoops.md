@@ -102,6 +102,16 @@ Can transform them into decorators sometimes.
 Impose a hard limit on how many decorators your views can have.
 No CBVs guide - a lot of good points: https://spookylukey.github.io/django-views-the-right-way/dependency-injection.html
 
+### Ch.10 - CBV Best practices ###
+`django-braces` = more useful mixins;
+`ccbv.co.uk` = must read whenever working with CBVs;
+Mixin = class that provides functionality to be inherited, but is not meant to be instantiated on its own.
+Mixins to the left, base views to the right.
+
+GCBVs = Generic CBV -> complex inheritance chains
+When using LoginRequiredMixin -> if dispatch is overridden, call super() immediately.
+
+
 
 
 

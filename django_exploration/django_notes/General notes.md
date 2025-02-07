@@ -232,7 +232,18 @@ SPECTACULAR_SETTINGS = {
 
 ### REST API course thoughts ###
 (Maybe include in repo README after)
-- App structure is a mess, you can't have a Recipe app with its corresponding model defined in another app. As far as I understood, apps should be package-like, in that you could import them in another application and re-use them?
+- App structure is messy, you can't have a Recipe app with its corresponding model defined in another app. As far as I understood, apps should be package-like, in that you could import them in another application and re-use them?
 - The whole concepts of apps in Django is a bit weird. The naming is confusing, it seems to want to reinvent the wheel. Consider having a large app with submodules instead in subsequent projects.
-- Code re-usability (DRY). Test files would benefit from a test utilities folder. Instructor does address it though. Test files would also benefit from being able to create dummy model objects in a standardized manner. (TODO: improvement)
+- Code re-usability (DRY). Test files would benefit from a test utilities folder. Instructor does address it though. Test files would also benefit from being able to create dummy model objects in a standardized manner.
 - APIs pretty similar to each other, good practice writing the code before watching the video though.
+
+### Deploying a Django App ###
+WSGI - runs the Python code
+Persistent data (stateless)
+Reverse proxy (handles requests from users + serves data more efficiently than a WSGI server)
+
+Nginx - looks much more complex than I expected.
+
+### Mixins ###
+To know if two mixins compose as intended, you need to know both their implementations (and potentially tinker with them). 
+e.g: 2x`UserPassesTestMixin` would not work together (only 1 of them will actually work, the other silently fails (?)).
