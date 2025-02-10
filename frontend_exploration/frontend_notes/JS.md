@@ -201,4 +201,8 @@ Returning in an async function = resolving a promise.
 Awaiting = using then.
 Try/Catch
 
+### Set ###
+Lack of a tuple object (like in Python) and of being able to override equals so Set can work properly with objects (like in Java) makes doing algo stuff in JS so painful.
+
+If the objects in the set are simple, you can use something like toString and fromString to serialize/deserialize, since set does work with strings.
 
