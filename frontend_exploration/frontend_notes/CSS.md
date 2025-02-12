@@ -134,3 +134,27 @@ Fix: `box-sizing: border-box; border: 1px solid transparent;` to the divs.
 ### Useful commands ###
 `max-width: fit-content;`
 
+### Transitions ###
+`transition-property: background-color;`
+`transition-duration: 1s;`
+`transition-timing-function: ease-out;`
+`transition-delay: 0.25s`;
+`transition: background-color 1s ease-out 0.25s` = all in one;
+
+### Animations ###
+Transitions = 
+- animating an element from one state to another; 
+- they need a trigger (like :hover or :focus).
+Animations = 
+- designed explicitly with loops in mind; 
+- do not need a trigger;
+
+`animation-duration: 3s`
+`animation-name -> @keyframes name_of_animation`
+`animation-iteration-count: number or infinite`
+`animation-direction: alternate`
+`animation: 3s infinite alternate animation_name;` = all in one.
+
+from = 0%, to = 100%, can have mid-point animations e.g: at 50%.
+
+
