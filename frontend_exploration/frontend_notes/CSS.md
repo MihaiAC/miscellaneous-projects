@@ -157,4 +157,14 @@ Animations =
 
 from = 0%, to = 100%, can have mid-point animations e.g: at 50%.
 
+### Responsiveness ###
+Mobile 320px ish?
+`max-width`
+Setting fixed width makes sense for things like icons, and small elements that we don't want to be resized.
+
+Images: set max width, height auto else it will be distorted.
+`background-position`, `background-size` - work on elements with a background image, but not directly on the img tag.
+`object-fit: fill | cover | contain` - works on img tag.
+`srcset` - for setting different image sources for different screen sizes
+
 
