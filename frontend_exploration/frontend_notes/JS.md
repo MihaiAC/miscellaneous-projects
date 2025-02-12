@@ -160,8 +160,9 @@ Createapp.dev -> customizing a config file.
 ### Linters and code formatters ###
 Include as project dependencies even if using the VScode extensions.
 
-### T.O.P. postponed projects (after React) ###
+### T.O.P. postponed projects (after React, probably never) ###
 TODO app: https://www.theodinproject.com/lessons/node-path-javascript-todo-list
+Battleship: https://www.theodinproject.com/lessons/node-path-javascript-battleship
 
 ### Form validation in JS ###
 Can do a combination of constraint validation API + custom validation methods.
