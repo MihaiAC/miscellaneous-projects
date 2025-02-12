@@ -1,8 +1,9 @@
 body {
-  margin: 0 0;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  max-width: 1400px;
 }
 
 h1,
@@ -39,6 +40,7 @@ p {
   flex-direction: column;
   padding: 0 1rem;
   gap: 2rem;
+  max-width: 900px;
 }
 
 h2 {
@@ -176,4 +178,35 @@ p {
 
 /* Large screen */
 @media (min-width: 1024px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .header-text {
+    padding-bottom: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .header-image-container {
+    padding-right: 1rem;
+  }
+
+  .header-icons {
+    justify-content: flex-end;
+  }
+
+  .footer-text-container {
+    flex: 1 1 auto;
+  }
+
+  .footer-img {
+    flex: 2 2 auto;
+    max-height: 400px;
+  }
+
+  .footer {
+    justify-content: space-between;
+    padding: 0 10rem 0 10rem;
+  }
 }
