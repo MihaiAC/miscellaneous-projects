@@ -1,12 +1,6 @@
 # Miscellaneous Projects
 
-A repo with code from various tutorials, completed courses, experiments with various tools/frameworks, and some small hobby projects.
-
-### Frontend & Web Development
-
-- [**learning_react**](/learning_react/) – Hands-on practice with React, Next.js, TypeScript, and testing with Vitest.
-- [**learning_tailwind**](/learning_tailwind/) – Responsive web design practice using Tailwind CSS.
-- [**three_fiber_tutorial**](/three_fiber_tutorial/) – Followed a popular React Three Fiber tutorial with some experimentation.
+A repo with code from various tutorials, courses, experiments with various tools/frameworks, and some hobby/older projects.
 
 ### Backend & Frameworks
 
@@ -15,7 +9,7 @@ A repo with code from various tutorials, completed courses, experiments with var
 - [**java_spring_exploration**](/java_spring_exploration/) – Basics of Java Spring, covering Hibernate, MVC, Thymeleaf, and JPA.
 - [**dotnet_exploration**](/dotnet_exploration/) – Simple REST API with ASP.NET Core.
 
-### Miscellaneous & Scripting
+### Miscellaneous
 
 - [**codeql_exploration**](/codeql_exploration/) – Exploring fundamentals of CodeQL.
 - [**bash_practice_scripts**](/bash_practice/) – Collection of Bash scripts for practice and learning.
