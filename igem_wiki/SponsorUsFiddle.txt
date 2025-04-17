@@ -1,0 +1,60 @@
+<body>
+<div class="hidden">
+	<script type="text/javascript">
+		<!--//--><![CDATA[//><!--
+			var images = new Array()
+			function preload() {
+				for (i = 0; i < preload.arguments.length; i++) {
+					images[i] = new Image()
+					images[i].src = preload.arguments[i]
+				}
+			}
+			preload(
+				"http://2017.igem.org/wiki/images/4/43/T--Edinburgh_UG--sponsorBronze.svg",
+				"http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorBronzeHover.sv",
+				"http://2017.igem.org/wiki/images/c/ce/T--Edinburgh_UG--sponsorSilver.svg",
+        "http://2017.igem.org/wiki/images/6/66/T--Edinburgh_UG--sponsorSilverHover.svg",
+        "http://2017.igem.org/wiki/images/4/44/T--Edinburgh_UG--sponsorGold.svg",
+        "http://2017.igem.org/wiki/images/6/6a/T--Edinburgh_UG--sponsorGoldHover.svg",
+        "http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorPlatinum.svg",
+        "http://2017.igem.org/wiki/images/e/e8/T--Edinburgh_UG--sponsorPlatinumHover.svg"
+			)
+		//--><!]]>
+	</script>
+</div>
+  <center>
+    <container class="same-width sponsor">
+      <img src="http://2017.igem.org/wiki/images/4/43/T--Edinburgh_UG--sponsorBronze.svg" name="bronzeimg" usemap="#bronzemap" onmouseover="this.src='http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorBronzeHover.svg'" onmouseout="this.src='http://2017.igem.org/wiki/images/4/43/T--Edinburgh_UG--sponsorBronze.svg'"
+      />
+      <map name="bronzemap" onmouseover="document.bronzeimg.src='http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorBronzeHover.svg'">
+        <area shape="rect" coords="45 220 150 245" href="https://stackoverflow.com/questions/18560097/how-to-make-a-section-of-an-image-a-clickable-link" alt="alttext">
+      </map>
+
+      <img src="http://2017.igem.org/wiki/images/c/ce/T--Edinburgh_UG--sponsorSilver.svg" name="silverimg" usemap="#silvermap" onmouseover="this.src='http://2017.igem.org/wiki/images/6/66/T--Edinburgh_UG--sponsorSilverHover.svg'" onmouseout="this.src='http://2017.igem.org/wiki/images/c/ce/T--Edinburgh_UG--sponsorSilver.svg'"
+      />
+      <map name="silvermap" onmouseover="document.silverimg.src='http://2017.igem.org/wiki/images/6/66/T--Edinburgh_UG--sponsorSilverHover.svg'">
+        <area shape="rect" coords="45 220 150 245" href="https://stackoverflow.com/questions/18560097/how-to-make-a-section-of-an-image-a-clickable-link" alt="alttext">
+      </map>
+
+      <img src="http://2017.igem.org/wiki/images/4/44/T--Edinburgh_UG--sponsorGold.svg" name="goldimg" usemap="#goldmap" onmouseover="this.src='http://2017.igem.org/wiki/images/6/6a/T--Edinburgh_UG--sponsorGoldHover.svg'" onmouseout="this.src='http://2017.igem.org/wiki/images/4/44/T--Edinburgh_UG--sponsorGold.svg'"
+      />
+      <map name="goldmap" onmouseover="document.goldimg.src='http://2017.igem.org/wiki/images/6/6a/T--Edinburgh_UG--sponsorGoldHover.svg'">
+        <area shape="rect" coords="45 220 150 245" href="https://stackoverflow.com/questions/18560097/how-to-make-a-section-of-an-image-a-clickable-link" alt="alttext">
+      </map>
+
+      <img src="http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorPlatinum.svg" name="platimg" usemap="#platmap" onmouseover="this.src='http://2017.igem.org/wiki/images/e/e8/T--Edinburgh_UG--sponsorPlatinumHover.svg'" onmouseout="this.src='http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorPlatinum.svg'"
+      />
+      <map name="platmap" onmouseover="document.platimg.src='http://2017.igem.org/wiki/images/e/e8/T--Edinburgh_UG--sponsorPlatinumHover.svg'">
+        <area shape="rect" coords="45 220 150 245" href="https://stackoverflow.com/questions/18560097/how-to-make-a-section-of-an-image-a-clickable-link" alt="alttext">
+      </map>
+
+    </container>
+  </center>
+</body>
+
+.sponsor img {
+  display: inline;
+  max-width: 200px;
+  height: auto;
+  margin: 10px;
+}

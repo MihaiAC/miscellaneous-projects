@@ -1,0 +1,265 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://2017.igem.org/Template:Edinburgh_UG/CSS?action=raw&amp;ctype=text/css">
+    <!-- External CSS for navbar, footer and page. -->
+
+    <style>
+        /* Max Width must be the max width of the carousel... */
+        .same-width {
+            width: 70%;
+            max-width: 900px;
+        }
+        
+        .carousel-indicators {
+            left: 13.5%;
+        }
+        
+        .carousel-control.left,
+        .carousel-control.right {
+            background-image: none
+        }
+        
+        #carousel {
+            border-style: solid;
+            border-width: 5pt;
+        }
+        
+        /*CSS for the sponsor us images. */
+        .sponsor img {
+            display: inline;
+            max-width: 200px;
+            height: auto;
+            margin: 10px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- Preloading hidden images. -->
+    <div class="hidden">
+        <script type="text/javascript">
+            <!--//--><![CDATA[//><!--
+        var images = new Array()
+
+            function preload() {
+                for (i = 0; i < preload.arguments.length; i++) {
+                    images[i] = new Image()
+                    images[i].src = preload.arguments[i]
+                }
+            }
+            preload(
+                "http://2017.igem.org/wiki/images/4/43/T--Edinburgh_UG--sponsorBronze.svg",
+                "http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorBronzeHover.sv",
+                "http://2017.igem.org/wiki/images/c/ce/T--Edinburgh_UG--sponsorSilver.svg",
+                "http://2017.igem.org/wiki/images/6/66/T--Edinburgh_UG--sponsorSilverHover.svg",
+                "http://2017.igem.org/wiki/images/4/44/T--Edinburgh_UG--sponsorGold.svg",
+                "http://2017.igem.org/wiki/images/6/6a/T--Edinburgh_UG--sponsorGoldHover.svg",
+                "http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorPlatinum.svg",
+                "http://2017.igem.org/wiki/images/e/e8/T--Edinburgh_UG--sponsorPlatinumHover.svg",
+                "http://2017.igem.org/wiki/images/d/db/T--Edinburgh_UG--ContactUsHover.svg"
+            )
+          //--><!]]>
+        </script>
+    </div>
+
+    <!-- Navbar (adapted from Bootstrap's documentation). -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="http://2017.igem.org/Team:Edinburgh_UG">
+                    <img alt="Brand" src="http://2017.igem.org/wiki/images/6/63/T--Edinburgh_UG--navbarlogo4.svg" width="90px" height="auto"
+                        style="padding-top:6.8px">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Team:Edinburgh_UG">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Team<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href=/Team:Edinburgh_UG/Team>Team</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Collaborations>Collaborations</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href=/Team:Edinburgh_UG/Description>Description</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Design>Design</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Experiments>Experiments</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Notebook>Notebook</a></li>
+                            <li><a href=/Team:Edinburgh_UG/InterLab>InterLab</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Contribution>Contribution</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Model>Model</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Results>Results</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Demonstrate>Demonstrate</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Improve>Improve</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Attributions>Attributions</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Parts<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href=/Team:Edinburgh_UG/Parts>Parts</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Basic_Parts>Basic Parts</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Composite_Part>Composite Parts</a></li>
+                            <li><a href=/Team:Edinburgh_UG/Part_Collection>Part Collection</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/Team:Edinburgh_UG/Safety">Safety</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Human Practices<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href=/Team:Edinburgh_UG/HP/Silver>Silver HP</a></li>
+                            <li> <a href=/Team:Edinburgh_UG/HP/Gold_Integrated>Integrated and Gold</a></li>
+                            <li><a href=/Team:Edinburgh_UG/HP/Engagement>Public Engagement</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Awards<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li> <a href=/Team:Edinburgh_UG/HP/Applied_Design>Applied Design</a></li>
+                            <li> <a href=/Team:Edinburgh_UG/HP/Entrepreneurship>Entrepreneurship</a></li>
+                            <li> <a href=/Team:Edinburgh_UG/HP/Hardware>Hardware</a></li>
+                            <li> <a href=/Team:Edinburgh_UG/HP/Model>Model</a></li>
+                            <li> <a href=/Team:Edinburgh_UG/HP/Plant>Plant</a></li>
+                            <li> <a href=/Team:Edinburgh_UG/HP/Software>Software</a></li>
+                        </ul>
+                    </li>
+                    <a href="mailto:igem2017edinburgh@gmail.com"><img src="http://2017.igem.org/wiki/images/c/c8/T--Edinburgh_UG--ContactUs.svg" onmouseover="this.src='http://2017.igem.org/wiki/images/d/db/T--Edinburgh_UG--ContactUsHover.svg'"
+                            onmouseout="this.src='http://2017.igem.org/wiki/images/c/c8/T--Edinburgh_UG--ContactUs.svg'" width="160px"
+                            height="50px" style="display:inline; padding-top: 5px;" /></a>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <br><br><br><br><br>
+
+    <!-- Logo -->
+    <center>
+        <img src="http://2017.igem.org/wiki/images/3/30/T--Edinburgh_UG--headerlogo2.svg" class="same-width">
+    </center>
+
+    <br><br><br>
+
+    <!-- Carousel -->
+    <center>
+        <div id="carousel" class="carousel slide same-width" data-ride="carousel">
+            <!-- Menu -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+                <li data-target="#carousel" data-slide-to="3"></li>
+                <li data-target="#carousel" data-slide-to="4"></li>
+                <li data-target="#carousel" data-slide-to="5"></li>
+            </ol>
+
+            <!-- Items -->
+            <div class="carousel-inner">
+
+                <div class="item active">
+                    <img src="http://2017.igem.org/wiki/images/d/da/T--Edinburgh_UG--carouselplaceholder1.svg" alt="Slide 1" />
+                </div>
+                <div class="item">
+                    <img src="http://2017.igem.org/wiki/images/f/f2/T--Edinburgh_UG--carouselplaceholder2.svg" alt="Slide 2" />
+                </div>
+                <div class="item">
+                    <img src="http://2017.igem.org/wiki/images/d/d9/T--Edinburgh_UG--carouselplaceholder3.svg" alt="Slide 3" />
+                </div>
+                <div class="item">
+                    <img src="http://2017.igem.org/wiki/images/7/7d/T--Edinburgh_UG--carouselplaceholder4.svg" alt="Slide 4" />
+                </div>
+                <div class="item">
+                    <img src="http://2017.igem.org/wiki/images/7/75/T--Edinburgh_UG--carouselplaceholder5.svg" alt="Slide 5" />
+                </div>
+                <div class="item">
+                    <a href="http://2017.igem.org/Team:Edinburgh_UG/Description">
+                        <img src="http://2017.igem.org/wiki/images/3/38/T--Edinburgh_UG--carouselplaceholder6.svg" alt="Slide 6" /></a>
+                </div>
+            </div>
+            <a href="#carousel" class="left carousel-control" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a href="#carousel" class="right carousel-control" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </center>
+
+    <h2 style="text-align:center"> Can you help us?
+        <h2>
+            <center>
+                <p style="text-align:center"> We are currently looking for sponsors to help realise our projects. </p>
+                <p style="text-align:center"> We would be delighted to accept support in the form of cash and free or discounted services and consumables.</p>
+                <p style="text-align:center"> iGEM is a high profile, international competition, in return for your sponsorship we can offer a range of
+                    advertising packages for your company: </p>
+            </center>
+
+            <center>
+                <container class="same-width sponsor">
+                    <img src="http://2017.igem.org/wiki/images/4/43/T--Edinburgh_UG--sponsorBronze.svg" name="bronzeimg" usemap="#bronzemap"
+                        onmouseover="this.src='http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorBronzeHover.svg'"
+                        onmouseout="this.src='http://2017.igem.org/wiki/images/4/43/T--Edinburgh_UG--sponsorBronze.svg'" />
+                    <map name="bronzemap" onmouseover="document.bronzeimg.src='http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorBronzeHover.svg'">
+        <area shape="rect" coords="45 220 150 245" href="mailto:igem2017edinburgh@gmail.com" alt="alttext">
+      </map>
+
+                    <img src="http://2017.igem.org/wiki/images/c/ce/T--Edinburgh_UG--sponsorSilver.svg" name="silverimg" usemap="#silvermap"
+                        onmouseover="this.src='http://2017.igem.org/wiki/images/6/66/T--Edinburgh_UG--sponsorSilverHover.svg'"
+                        onmouseout="this.src='http://2017.igem.org/wiki/images/c/ce/T--Edinburgh_UG--sponsorSilver.svg'" />
+                    <map name="silvermap" onmouseover="document.silverimg.src='http://2017.igem.org/wiki/images/6/66/T--Edinburgh_UG--sponsorSilverHover.svg'">
+        <area shape="rect" coords="45 220 150 245" href="mailto:igem2017edinburgh@gmail.com" alt="alttext">
+      </map>
+
+                    <img src="http://2017.igem.org/wiki/images/4/44/T--Edinburgh_UG--sponsorGold.svg" name="goldimg" usemap="#goldmap" onmouseover="this.src='http://2017.igem.org/wiki/images/6/6a/T--Edinburgh_UG--sponsorGoldHover.svg'"
+                        onmouseout="this.src='http://2017.igem.org/wiki/images/4/44/T--Edinburgh_UG--sponsorGold.svg'" />
+                    <map name="goldmap" onmouseover="document.goldimg.src='http://2017.igem.org/wiki/images/6/6a/T--Edinburgh_UG--sponsorGoldHover.svg'">
+        <area shape="rect" coords="45 220 150 245" href="mailto:igem2017edinburgh@gmail.com" alt="alttext">
+      </map>
+
+                    <img src="http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorPlatinum.svg" name="platimg" usemap="#platmap" onmouseover="this.src='http://2017.igem.org/wiki/images/e/e8/T--Edinburgh_UG--sponsorPlatinumHover.svg'"
+                        onmouseout="this.src='http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorPlatinum.svg'" />
+                    <map name="platmap" onmouseover="document.platimg.src='http://2017.igem.org/wiki/images/e/e8/T--Edinburgh_UG--sponsorPlatinumHover.svg'">
+        <area shape="rect" coords="45 220 150 245" href="mailto:igem2017edinburgh@gmail.com" alt="alttext">
+      </map>
+
+                </container>
+            </center>
+
+            <!-- Importing jquery and Bootstrap min.js + making the carousel work. -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script>
+                                                     $("#carousel").carousel();
+            </script>
+</body>
+
+<!-- Footer -->
+<footer style="color:#fff; padding-top:16px; padding-bottom:16px">
+    <p style="text-align: center;">University of Edinburgh 2017 UG Team</p>
+    <center>
+        <a href="http://www.ed.ac.uk/">
+            <img src="http://2017.igem.org/wiki/images/f/f6/T--Edinburgh_UG--UoElogo.jpg" style="width: auto; height: 60px"></a>
+        <a href="http://igem.org/Main_Page">
+            <img src="http://2015.igem.org/wiki/images/f/fa/Qqq_IGEM_official_logo.png" style="width: auto; height: 60px">
+        </a>
+        <a href="https://www.facebook.com/EdiGEM2017/">
+            <img src="https://facebookbrand.com/wp-content/themes/fb-branding/prj-fb-branding/assets/images/fb-art.png" style="width: auto; height: 60px">
+        </a>
+        <a href="http://igem.org/Main_Page">
+            <img src="http://2017.igem.org/wiki/images/7/77/T--Edinburgh_UG--TwitterIcon.svg" style="width: auto; height: 60px">
+        </a>
+
+    </center>
+</footer>

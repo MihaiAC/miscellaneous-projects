@@ -1,0 +1,73 @@
+<div class="container" position="position-relative">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <p class="topic" style="text-align:center;font-size:250%;font-family:serif;background-color: #E7DFDD">Inspiration</p>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <div align="justify">
+          Many commercially important chemicals are manufactured with the help of microbes. These microbes are often genetically modified so that they are equipped with the necessary enzymes to produce those chemicals. However, there are millions of species in
+          nature, each carrying their own version of enzymes. Which one should we choose to put into the microbes? To answer this questions, researchers normally test these enzymes – or combinations of enzymes – one by one to see if they work well in
+          the microbe. As you may imagine, this is very labour-intensive and time-consuming, even with the help of automated systems. Therefore, we, the Homologics team, are developing a highly-adaptable method to speed up this process.
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <p class="topic" style="text-align:center;font-size:250%;font-family:serif;background-color: #E7DFDD">Sponsor us</p>
+    <div class="row" style="background-color: #f0eceb; padding-bottom:50px">
+      <div class="col-xs-6 col-md-3">
+        <div class="caption">
+          <h3 style="text-align:center; padding-left:-10px">Bronze</h3>
+          <ul style="display:table; margin:0 auto; list-style: none; padding-left: 10px">
+            <li> <em style="color:#0B744B">&#10004;</em> Logo on website</li>
+            <li> <em style="color:#0B744B">&#10004;</em> Recognition on social media</li>
+            <li style="color:grey"><em>&#10008;</em> Logo on t-shirts</li>
+            <li style="color:grey"><em>&#10008;</em> Logo on media content</li>
+            <li style="color:grey"><em>&#10008;</em> Logo on presentation</li>
+            <li style="color:grey"><em>&#10008;</em> Logo on official poster</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <div class="caption">
+          <h3 style="text-align:center; padding-left:-10px">Silver</h3>
+          <ul style="display:table; margin:0 auto; list-style: none; padding-left: 10px">
+            <li> <em style="color:#0B744B">&#10004;</em> Logo on website</li>
+            <li> <em style="color:#0B744B">&#10004;</em> Recognition on social media</li>
+            <li> <em style="color:#0B744B">&#10004;</em> Logo on t-shirts</li>
+            <li style="color:grey"><em>&#10008;</em> Logo on media content</li>
+            <li style="color:grey"><em>&#10008;</em> Logo on presentation</li>
+            <li style="color:grey"><em>&#10008;</em> Logo on official poster</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <div class="caption">
+          <h3 style="text-align:center; padding-left:-10px">Gold</h3>
+          <ul style="display:table; margin:0 auto; list-style: none; padding-left: 10px">
+            <li> <em style="color:#0B744B">&#10004;</em> Logo on website</li>
+            <li> <em style="color:#0B744B">&#10004;</em> Recognition on social media</li>
+            <li> <em style="color:#0B744B">&#10004;</em> Logo on t-shirts</li>
+            <li> <em style="color:#0B744B">&#10004;</em> Logo on media content</li>
+            <li> <em style="color:#0B744B">&#10004;</em> Logo on presentation</li>
+            <li style="color:grey"><em>&#10008;</em> Logo on official poster</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <h3 style="text-align:center; padding-left:-10px">Platinum</h3>
+        <ul style="display:table; margin:0 auto; list-style: none; padding-left: 10px">
+          <li> <em style="color:#0B744B">&#10004;</em> Logo on website</li>
+          <li> <em style="color:#0B744B">&#10004;</em> Recognition on social media</li>
+          <li> <em style="color:#0B744B">&#10004;</em> Logo on t-shirts</li>
+          <li> <em style="color:#0B744B">&#10004;</em> Logo on media content</li>
+          <li> <em style="color:#0B744B">&#10004;</em> Logo on presentation</li>
+          <li> <em style="color:#0B744B">&#10004;</em> Logo on official poster</li>
+        </ul>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,27 @@
+<p class="topic" style="text-align:center;font-size:350%;font-family:serif;background-color:#a8b6bf">Introduction</p>
+<p class="general"  style="font-size:170%;font-family:serif;">
+Biological synthesis and metabolic engineering have jointly emerged to provide an alternative to organic synthesis of drugs – given that most are derivatives of naturally found substances, meaning their synthetic pathway already exists in nature – and use of petroleum-derived fuels by offering a more sustainable and greener alternative for an energy source. For higher yield and lower cost, researchers have been optimising metabolic pathways by: </p>
+
+<div style="padding-left:130px;font-weight:50;color:#0A1E3F;font-family:serif;font-size:170%;">
+<ul>
+  <li>identifying the ideal environment for the organism</li>
+  <li>removing pathways that are unnecessary for the survival of the organism or the production of the product</li>
+  <li>removing negative feedback</li>
+  <li>codon optimisation</li>
+  <li>increasing expressivity by the choice of promoter and RBS</li>
+  <li>improving the methods for genetic modifications</li>
+  <li>determining the rate limiting step of a synthesis and testing homologues enzymes that have higher reaction rates.</li>
+</ul>
+</div>
+
+<p class="general"  style="font-size:170%;font-family:serif;">
+Given the number of aspects that are taken into consideration, metabolic engineering is a strenuous and time-consuming procedure. One of the contributing reasons is that by today’s method all genetic modification are introduced separately into the system. Our project aims to address this issue by designing a genetic construct that would randomly introduce multiple homologues into a culture. This means if we have a 5-step synthetic pathway and each step is tested for 4 randomly-expressed enzyme homologues, a culture will contain 1024 varied combinations of the 5 enzymes and thus we will be able to detect which one is the optimal combination of enzyme homologues. 
+</p>
+
+<center>
+<img src="http://2017.igem.org/wiki/images/1/1b/T--Edinburgh_UG--DescriptionOne.png" width="70%" style="padding-top:20px;padding-bottom:20px">
+</center>
+
+<p class="general"  style="font-size:170%;font-family:serif;">
+This method would allow homologues to be tested in a bulk in vivo, a method that have not been introduced to metabolic engineering. However, this aspect is crucial for an efficient method, as studies have indicated that by changing the enzyme in the RDS can form new constraints at a different point in the system, as the network flow of substrates and products in the cell is not fully characterised. By testing the enzymes in bulk, and having all the enzymes needed in the pathway to be tested together in the same device in one go, the reaction steps of the pathway aren’t investigated individually and it also saves much more time and labour involved in the traditional method. The pathway is characterised as a whole for its ability to produce the final product, which is the aim of all metabolic engineering – to have higher yield.
+</p>

@@ -1,0 +1,8 @@
+0. Finish team page + description page + in-construction pages.
+1. Responsiveness.
+2. Maybe redo the burger thingy?.
+3. When resizing window, keep everything together.
+4. Team portraits like facebook.
+
+Questions:
+Front page sponsor message could be clearer.

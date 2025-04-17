@@ -1,0 +1,77 @@
+CSS (DEPRECATED)
+http://2017.igem.org/Template:Edinburgh_UG/CSS?action=raw&amp;ctype=text/css
+
+BOOTSTRAP CSS
+http://2017.igem.org/Template:Edinburgh_UG/bootstrap?action=raw&amp;ctype=text/css" rel="stylesheet
+
+BOOTSTRAP JS
+http://2017.igem.org/Template:Edinburgh_UG/bootstrapMinJs&action=raw&ctype=text/javascript
+
+NAVBAR LOGO (DEPRECATED)
+http://2017.igem.org/wiki/images/2/21/T--Edinburgh_UG--invertednavbarlogo1.svg
+
+NAVBAR LOGO (DEPRECATED)
+http://2017.igem.org/wiki/images/0/03/T--Edinburgh_UG--navbarlogo3.svg
+
+NAVBAR LOGO (CURRENT)
+http://2017.igem.org/wiki/images/6/63/T--Edinburgh_UG--navbarlogo4.svg
+
+HEADER LOGO (DEPRECATED)
+http://2017.igem.org/wiki/images/7/7b/T--Edinburgh_UG--headerlogo1.svg
+
+HEADER LOGO (CURRENT)
+http://2017.igem.org/wiki/images/3/30/T--Edinburgh_UG--headerlogo2.svg
+
+UOE FOOTER LOGO (CURRENT)
+http://2017.igem.org/wiki/images/f/f6/T--Edinburgh_UG--UoElogo.jpg
+
+CAROUSEL PLACEHOLDERS
+http://2017.igem.org/wiki/images/d/da/T--Edinburgh_UG--carouselplaceholder1.svg
+http://2017.igem.org/wiki/images/f/f2/T--Edinburgh_UG--carouselplaceholder2.svg
+http://2017.igem.org/wiki/images/d/d9/T--Edinburgh_UG--carouselplaceholder3.svg
+http://2017.igem.org/wiki/images/7/7d/T--Edinburgh_UG--carouselplaceholder4.svg
+http://2017.igem.org/wiki/images/7/75/T--Edinburgh_UG--carouselplaceholder5.svg
+http://2017.igem.org/wiki/images/3/38/T--Edinburgh_UG--carouselplaceholder6.svg
+
+SPONSOR US IMAGES
+http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorPlatinum.svg
+http://2017.igem.org/wiki/images/e/e8/T--Edinburgh_UG--sponsorPlatinumHover.svg
+http://2017.igem.org/wiki/images/4/44/T--Edinburgh_UG--sponsorGold.svg
+http://2017.igem.org/wiki/images/6/6a/T--Edinburgh_UG--sponsorGoldHover.svg
+http://2017.igem.org/wiki/images/c/ce/T--Edinburgh_UG--sponsorSilver.svg
+http://2017.igem.org/wiki/images/6/66/T--Edinburgh_UG--sponsorSilverHover.svg
+http://2017.igem.org/wiki/images/4/43/T--Edinburgh_UG--sponsorBronze.svg
+http://2017.igem.org/wiki/images/0/09/T--Edinburgh_UG--sponsorBronzeHover.svg
+
+CONTACT US
+http://2017.igem.org/wiki/images/c/c8/T--Edinburgh_UG--ContactUs.svg
+http://2017.igem.org/wiki/images/d/db/T--Edinburgh_UG--ContactUsHover.svg
+
+TWITTER
+http://2017.igem.org/wiki/images/7/77/T--Edinburgh_UG--TwitterIcon.svg
+
+DESCRIPTION PAGE
+http://2017.igem.org/wiki/images/b/b0/T--Edinburgh_UG--descr_LogicGates.svg
+http://2017.igem.org/wiki/images/6/6f/T--Edinburgh_UG--descr_PulseConstruct.svg
+http://2017.igem.org/wiki/images/8/81/T--Edinburgh_UG--descr_Randomisation.svg
+http://2017.igem.org/wiki/images/4/4d/T--Edinburgh_UG--descr_ToolkitContent.svg
+
+UNDER CONSTRUCTION
+http://2017.igem.org/wiki/images/c/cb/T--Edinburgh_UG--constr_contactHover.svg
+http://2017.igem.org/wiki/images/b/bd/T--Edinburgh_UG--constr_contact.svg
+http://2017.igem.org/wiki/images/9/9c/T--Edinburgh_UG--constr_homeHover.svg
+http://2017.igem.org/wiki/images/5/5e/T--Edinburgh_UG--constr_home.svg
+http://2017.igem.org/wiki/images/3/3c/T--Edinburgh_UG--constr_projectHover.svg
+http://2017.igem.org/wiki/images/7/7a/T--Edinburgh_UG--constr_project.svg
+http://2017.igem.org/wiki/images/3/3c/T--Edinburgh_UG--constr_teamHover.svg
+http://2017.igem.org/wiki/images/3/32/T--Edinburgh_UG--constr_team.svg
+http://2017.igem.org/wiki/images/7/73/T--Edinburgh_UG--constr_warning.svg
+
+NAVBAR PAGES 
+/Team:Edinburgh_UG/Collaborations, Description, Design, Experiments, Notebook, InterLab, Contribution, Model, Results, Demonstrate, Improve, Attributions, Parts, Basic Parts, Composite_Part, Part_Collection, Safety, /HP/Silver, /HP/Gold_Integrated, /HP/Engagement, (the following with /HP/): Applied_Design, Entrepreneurship, Hardware, Model, Plant, Software.
+
+TEAM
+http://2017.igem.org/wiki/images/9/98/T--Edinburgh_UG--Team.jpg
+http://2017.igem.org/wiki/images/f/fd/T--Edinburgh_UG--team_bottomNames.svg
+http://2017.igem.org/wiki/images/d/d3/T--Edinburgh_UG--team_topNames.svg
+
