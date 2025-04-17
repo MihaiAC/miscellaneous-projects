@@ -15,3 +15,4 @@ A repo with code from various tutorials, online courses, university assignments,
 - [**docker_refresher**](/docker_refresher/) – Docker tutorials.
 - [**go_exploration**](/go_exploration/) – Some simple Go scripts.
 - [**haskell_fractals**](/haskell_fractals/) – Generating fractals in Haskell.
+- [**minf_project**](/minf_project/) - Code for my Master's project.
