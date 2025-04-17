@@ -1,1 +1,0 @@
-# Edinburgh_UG-iGEM-2017-wiki-

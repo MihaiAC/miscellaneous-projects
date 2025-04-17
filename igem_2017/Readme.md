@@ -1,0 +1,1 @@
+Code written as part of University of Edinburgh's undergraduate iGEM 2017 team. Contains the team [wiki](./igem_wiki/) and a [tool](./igem_oligo_designer/) that helped with designing oligonucleotides.
