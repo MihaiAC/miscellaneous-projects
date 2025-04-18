@@ -1,0 +1,3 @@
+- [BDL](./BDL/) - A few scripts written in Solidity for the Blockchains and Distributed Ledgers course.
+- [COMN](./COMN/) - Old assignments for an introductory computer networking course.
+- [TTDS](./TTDS/), [TTDS_labs](./TTDS_labs/) - Helper scripts and old assignments for the first half of the Text Technologies for Data Science course (which was about Information Retrieval and search engines).

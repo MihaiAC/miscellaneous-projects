@@ -16,4 +16,5 @@ A repo with code from various tutorials, online courses, university assignments,
 - [**go_exploration**](/go_exploration/) – Some simple Go scripts.
 - [**haskell_fractals**](/haskell_fractals/) – Generating fractals in Haskell.
 - [**igem_2017**](/igem_2017/) - Code written as part of my university's 2017 undergraduate iGEM team.
+- [**final_year_scripts**](/final_year_scripts/) - Some assignments and scripts from my last year at uni.
 - [**minf_project**](/minf_project/) - Code for my Master's project.
