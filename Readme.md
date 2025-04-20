@@ -1,6 +1,6 @@
 # Miscellaneous Projects
 
-A repo with code from various tutorials, online courses, university assignments, experiments with various tools/frameworks, and some hobby+older projects.
+A repo with code from various tutorials, online courses, university assignments, experiments with different tools/frameworks, and some hobby+older projects.
 
 ### Backend & Frameworks
 
