@@ -14,4 +14,3 @@ Keywords/concepts to serve as reminders.
 - HDFS
 - Message queues - (producers - queue - consumers)
 - Spark - YARN, Spark streaming with Kinesis/Kafka; Streaming, SQL, MLLib, Core.
-- 
