@@ -1,10 +1,10 @@
 const express = require("express");
+const { v4: uuidv4 } = require("uuid");
 const app = express();
 app.use(express.json());
 
 // Map of movies.
 const movies = new Map();
-var currId = 0;
 
 // Simple validation
 const validateMovie = (req, res, next) => {
@@ -22,7 +22,7 @@ app.get("/movies", (req, res) => {
 
 // GET by ID
 app.get("/movies/:id", (req, res) => {
-  const movieId = parseInt(req.params.id);
+  const movieId = req.params.id;
   const movie = movies.get(movieId);
   if (!movie) {
     return res.status(404).send("Movie not found");
@@ -34,21 +34,21 @@ app.get("/movies/:id", (req, res) => {
 
 // POST
 app.post("/movies", validateMovie, (req, res) => {
+  const currId = uuidv4();
   const movie = {
     id: currId,
     title: req.body.title,
     genre: req.body.genre,
     year: req.body.year,
   };
-  movies.set(currId, movie);
-  currId += 1;
 
+  movies.set(currId, movie);
   res.status(201).json(movie);
 });
 
 // PUT
 app.put("/movies/:id", validateMovie, (req, res) => {
-  const movieId = parseInt(req.params.id);
+  const movieId = req.params.id;
   const movie = movies.get(movieId);
 
   if (!movie) {
@@ -64,7 +64,7 @@ app.put("/movies/:id", validateMovie, (req, res) => {
 
 // DELETE
 app.delete("/movies/:id", (req, res) => {
-  const movieId = parseInt(req.params.id);
+  const movieId = req.params.id;
   if (!movies.has(movieId)) {
     return res.status(404).send("Movie not found!");
   }
