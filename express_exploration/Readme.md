@@ -1,1 +1,1 @@
-Simple REST API following this [tutorial](https://www.freecodecamp.org/news/learn-rest-api-principles-by-building-an-express-app/).
+Simple REST API starting from this [tutorial](https://www.freecodecamp.org/news/learn-rest-api-principles-by-building-an-express-app/). Used a mongoDB instance running a container to save the movies + uuid instead of sequential IDs.
