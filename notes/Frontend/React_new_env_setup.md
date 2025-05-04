@@ -19,6 +19,10 @@ Install ESLint + Prettier.
 `npx eslint --init`
 
 Second object seems to be optional.
+In eslint.config.js:
+`import reactHooks from "eslint-plugin-react-hooks";`
+
+then:
 ```
 pluginReact.configs.flat["jsx-runtime"],
 {
