@@ -114,3 +114,10 @@ Delete icons.
 Delete App.tsx extra stuff.
 
 Either clsx or classnames for easier application of class names.
+
+For the Tailwind extension, add the following to `.vscode/settings.json`:
+```json
+{
+	"tailwindCSS.experimental.configFile": "src/index.css"
+}
+```
