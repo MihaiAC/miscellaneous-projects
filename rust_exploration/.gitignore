@@ -1,0 +1,68 @@
+# === OS-generated files ===
+.DS_Store
+desktop.ini
+Thumbs.db
+
+# === Editor/IDE settings ===
+*.swp
+*.swo
+Session.vim
+.vim/
+.idea/
+*.iml
+.vscode/
+.helix/
+.zed/
+.favorites.json
+.settings/
+.vs/
+.dir-locals.el
+
+# === Build artifacts ===
+**/target/
+**/build/
+**/dist/
+**/dl/
+**/obj/
+**/*.rlib
+**/*.dSYM/
+**/*.exe
+**/*.dll
+**/*.so
+**/*.dylib
+
+# === Cargo and Rust related ===
+**/.cargo/
+**/Cargo.lock
+
+# === ICE reports / panic outputs ===
+rustc-ice-*.txt
+
+# === Temporary files ===
+*~
+\#*
+\#*\#
+.#*
+
+# === Tags ===
+tags
+tags.*
+TAGS
+TAGS.*
+
+# === Python — just in case
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+
+# === Node.js (for dprint or doc tooling)
+**/node_modules/
+**/package-lock.json
+**/pnpm-lock.yaml
+
+# === Direnv & Nix
+**/.envrc
+**/.direnv/
+**/flake.nix
+**/flake.lock
+**/default.nix
