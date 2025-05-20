@@ -21,3 +21,18 @@ Add packages by first updating the .toml deps:
 time="0.1.12"
 regex="0.1.41"
 ```
+
+#### Rust project structure
+`src/lib.rs` = default library file
+`src/main.rs` = default exe file
+`benches` = benchmarks
+`tests` = integration tests
+
+#### Cargo.toml vs Cargo.lock
+.toml describes dependencies, you write it, .lock generated from .toml by Cargo, don't edit it
+
+Revisions in deps: 
+```toml
+regex = { git = "https://github.com/rust-lang/regex.git", rev = "9f9f693" }
+```
+Can update packages to latest version with `cargo update`, `cargo update specific_package`.
