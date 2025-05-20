@@ -7,3 +7,17 @@ Types of targets:
 3. Target architecture (OS + machine)
 4. Target triple = way to specify target architecture, `<arch><sub>-<vendor>-<sys>-<abi>` e.g: armv7-pc-linux-gnu
 A crate can be subdivided into modules.
+
+Cargo = Rust package manager, ensures repeatable build.
+
+Creating a binary program:
+`cargo new hello_world --bin --vcs none`
+`--bin` can be replaced by `--lib` (but it also initialises a new git repo by default)
+`cargo build --release` = compile files with optimizations turned on.
+
+Add packages by first updating the .toml deps:
+```toml
+[dependencies]
+time="0.1.12"
+regex="0.1.41"
+```
