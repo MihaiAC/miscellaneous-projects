@@ -36,3 +36,26 @@ Revisions in deps:
 regex = { git = "https://github.com/rust-lang/regex.git", rev = "9f9f693" }
 ```
 Can update packages to latest version with `cargo update`, `cargo update specific_package`.
+
+#### Ownership
+
+Safety = absence of undefined behaviour
+
+**Variables live in the stack.**
+Variables live in frames; frame = mapping from variable to value within a single scope, like a function.
+Frames are organized into a stack of currently-called functions. 
+
+**Boxes live in the heap**
+Heap = separate region of memory where data can live indefinitely, not tied to a specific stack frame.
+Box = construct that allows putting data on the heap.
+
+**Rust does not permit manual memory management**
+A box's owner manages deallocation.
+```rust
+let a = Box::new([0; 1_000_000]);
+let b = a;
+```
+First line: allocates an array of 1M zeros and binds it to a.
+Second line: ownership is transferred from a to b.
+
+Can **clone** elements.
