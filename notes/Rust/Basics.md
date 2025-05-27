@@ -59,3 +59,35 @@ First line: allocates an array of 1M zeros and binds it to a.
 Second line: ownership is transferred from a to b.
 
 Can **clone** elements.
+
+### References and Borrowing
+```rust
+fn main() {
+    let m1 = String::from("Hello");
+    let m2 = String::from("world");
+    greet(m1, m2);
+    let s = format!("{} {}", m1, m2); // Error: m1 and m2 are moved
+}
+
+fn greet(g1: String, g2: String) {
+    println!("{} {}!", g1, g2);
+}
+```
+This is so weird, so the greet function moves m1 and m2??
+As an inconvenient workaround, you could return g1, g2 in the greet function.
+Convenient solution: references
+```rust
+fn main() {
+    let m1 = String::from("Hello");
+    let m2 = String::from("world");
+    greet(&m1, &m2); // note the ampersands
+    let s = format!("{} {}", m1, m2);
+}
+
+fn greet(g1: &String, g2: &String) { // note the ampersands
+    println!("{} {}!", g1, g2);
+}
+```
+g1 does not own m1 and neither the heap string "Hello".
+
+**References** = non-owning pointers.
