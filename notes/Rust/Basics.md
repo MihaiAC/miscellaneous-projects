@@ -91,3 +91,33 @@ fn greet(g1: &String, g2: &String) { // note the ampersands
 g1 does not own m1 and neither the heap string "Hello".
 
 **References** = non-owning pointers.
+
+```rust
+// Puts the number 1 on the heap.
+// x is a pointer on the stack, pointing to the 1 on the heap.
+// x OWNS the 1 on the heap.
+let mut x: Box<i32> = Box::new(1);
+
+// Since a is an i32, the following operation makes a copy of the value referenced by x.
+// The copied value is on the stack, with a pointing to it.
+let a: i32 = *x;
+
+// This modifies the heap value x is pointing to.
+*x += 1;
+
+// If we were to print x and a in this order, we would get 2 and 1.
+
+// r1 is a pointer on the stack, that points to x.
+let r1: &Box<i32> = &x; 
+
+// *r1 = x (the box itself)
+// **r1 = 1 (the integer inside the box)
+let b: i32 = **r1;
+
+// *x dereferences the Box<i32>, so is basically the integer on the heap
+// &*x = direct reference to the i32 on the heap.
+let r2: &i32 = &*x;
+
+// c is the value on the heap.
+let c: i32 = *r2; 
+```
