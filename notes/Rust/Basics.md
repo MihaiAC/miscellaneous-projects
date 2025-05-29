@@ -121,3 +121,48 @@ let r2: &i32 = &*x;
 // c is the value on the heap.
 let c: i32 = *r2; 
 ```
+
+Implicit de-referencing with the dot operator:
+```rust
+// x is on the stack, pointing to an i32 on the heap (-1)
+let x: Box<i32> = Box::new(-1);
+
+// Two ways to dereference x and call abs on it.
+let x_abs1 = i32::abs(*x);
+let x_abs2 = x.abs();
+assert_eq!(x_abs1, x_abs2);
+```
+
+```rust
+// r is on the stack, pointing to x, which is also on the stack.
+let r: &Box<i32> = &x;
+
+// De-referencing the "old way", *r = x, **r = -1
+let r_abs1 = i32::abs(**r);
+
+// De-referencing with the dot.
+let r_abs2 = r.abs();
+```
+
+I don't understand this one yet.
+```rust
+let s = String::from("Hello");
+let s_len1 = str::len(&s);
+let s_len2 = s.len();   
+assert_eq!(s_len1, s_len2);
+```
+So s is a string.
+The len function requires a string address (why?)
+
+```rust
+fn main() {
+	let x = Box::new(0);
+	let y = Box::new(&x);
+}
+```
+How many dereferences on y to copy 0?
+
+So. x is on the stack, pointing to a 0 on the heap. y is on the stack, pointing to the heap to a reference to x. 
+`*y = &x`
+`**y = x`
+`***y = 0`
