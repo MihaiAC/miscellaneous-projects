@@ -166,3 +166,55 @@ So. x is on the stack, pointing to a 0 on the heap. y is on the stack, pointing 
 `*y = &x`
 `**y = x`
 `***y = 0`
+
+#### How Rust avoids simultaneous aliasing and mutation
+**Aliasing**  = accessing the same data through different variables.
+**Aliasing + mutation** = big problem:
+- One variable can deallocate the aliased data, leaving the other variable to point to deallocated memory.
+- Mutating aliased data => other var's expectations can be invalidated.
+- Concurrently mutating aliased data => undefined behaviour.
+
+```rust
+// Declare a vector and a pointer to the 3rd element.
+let mut v: Vec<i32> = vec![1, 2, 3];
+let num: &i32 = &v[2];
+
+// Since v was at capacity, the push creates a new vector and copies the first three elements and appends the 4.
+v.push(4);
+
+println!("Third element is {}", *num); // undefined behavior, the third element might no longer be at this address
+```
+
+Basic principle in Rust:
+**Pointer safety = data should never be aliased and mutated at the same time.**
+
+
+#### Borrow checker
+Variables have three kinds of permissions:
+- R = Read = data can be copied to another location
+- W = Write = data can be mutated
+- O = Own = data can be moved or dropped
+These permissions exist only at compile time.
+
+A variable has RO permissions on its data, by default. 
+If it was declared with `let mut` => also has W permission.
+**References can temporarily remove these permissions.**
+
+Example:
+```rust
+let mut v: Vec<i32> = vec![1, 2, 3];
+// v gained RWO
+
+let num: &i32 = &v[2];
+// v lost WO
+// num gained RO
+// *num gained R
+
+println!("Third element is {}", *num);
+// v regained WO, because this is the last time num is used in the program;
+// num lost RO
+// *num lost R
+
+v.push(4);
+// v loses RWO as this is the last time it's used;
+```
