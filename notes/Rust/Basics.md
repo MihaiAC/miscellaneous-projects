@@ -218,3 +218,24 @@ println!("Third element is {}", *num);
 v.push(4);
 // v loses RWO as this is the last time it's used;
 ```
+Q: Why do we have permissions for both `num` and `*num`?
+A: Because accessing data through a reference is not the same as manipulating the reference itself.
+
+```rust
+// x has RO
+let x = 0;
+
+let mut x_ref = &x;
+// x lost O
+// x_ref gained RWO
+// *x_ref only has R - why? Because *x_ref is basically x
+```
+This means that you can assign a different reference to x_ref, but not mutate the value it points to.
+
+**Permissions are defined on places**, not just variables.
+Place = anything on the LHS of an assignment:
+- Variables `a`
+- Dereferences of places `*a`
+- Array accesses of places `a[0]`
+- Fields of places `a.0` or `a.field`
+- Any combination of the above `*((*a))[0].1` for example.
