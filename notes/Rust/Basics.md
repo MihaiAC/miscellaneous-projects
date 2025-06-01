@@ -239,3 +239,104 @@ Place = anything on the LHS of an assignment:
 - Array accesses of places `a[0]`
 - Fields of places `a.0` or `a.field`
 - Any combination of the above `*((*a))[0].1` for example.
+
+**Mutable references** = **unique references** = unique + non-owning.
+
+More fun things:
+Make a read-only, immutable reference `= &x`
+Make a mutable reference: `= &mut x`
+
+
+`let y: &mut i32 = &mut x;` = can mutate value, can't reassign binding;
+`let mut y: &mut i32` = can mutate value, can reassign binding;
+`let mut y: &i32` = can't mutate value, can reassign binding;
+
+
+`let num: &mut i32 = &mut v[2];` -> v loses **all permissions**
+`num` has RO
+`*num` has  RW
+
+**Permissions are returned at the end of a reference's lifetime**
+
+**Data must outlive all of its references**
+Example of error within a function:
+```rust
+let s = String::from("Hello world");
+let s_ref = &s; // s loses O
+
+drop(s); // error, to drop s, it must have O
+println("{}", s_ref); // just a stmt to keep s_ref in the fold
+```
+
+Example when references cross function boundaries:
+```rust
+fn first(strings: &Vec<String>) -> &String {
+	let s_ref = &strings[0];
+	s_ref
+}
+```
+
+When references come into or out of functions, Rust can't tell how long those references will live just from the body of the function => new permission named "flow permission" F.
+
+F = this reference can safely flow in or out;
+RWO = can change within the function
+F is stable, if ref has F => can return it or use it as input safely
+
+Error 1: missing lifetime specifier
+```rust
+fn first_or(strings: &Vec<String>, default: &String) -> &String {
+    // returns either strings[0] or default
+}
+```
+Doesn't know if the output &String is a reference to either strings or default.
+If you were to create a new String within the function, you'd just create a new one and return String not &String (kinda weird, so does this imply that a &String return type implies that it's a reference to one of the two inputs necessarily??).
+**A returned reference must always be linked to some input reference or a global/static value.**
+
+Example where the previous function would be an issue:
+```rust
+fn main() {
+    let strings = vec![];
+    let default = String::from("default");
+    let s = first_or(&strings, &default);
+    drop(default);
+    println!("{}", s);
+}
+```
+Default can flow into s, which makes the drop undefined, since default wouldn't hold O in this case (s would).
+
+Similar example:
+```rust
+fn return_a_string() -> &String {
+    let s = String::from("Hello world");
+    let s_ref = &s;
+    s_ref
+}
+```
+`s_ref` would be invalidated on function return
+
+Final chapter exercise (assume give_and_take doesn't automatically produce a compiler error)
+Error
+```rust
+let v = vec![1, 2, 3]; // v has RWO
+let n = &v[0]; // n gets R on v[0]
+give_and_take(&v, 4); // potentially reallocates vector, n will point to possibly invalid data or memory
+println!("{}", n);
+```
+
+Would work:
+```rust
+let v = vec![1, 2, 3]; // v has RWO
+let n = &v[0]; // n gets R on v[0], then is immediately dropped since it's not used afterwards
+let k = give_and_take(&v, 4); // no longer the issue above
+println!("{}", k);
+```
+
+Would work:
+```rust
+let v = vec![1, 2, 3]; // v has RWO
+let v2 = &v; // v2 borrows v immutably => v has R permission on vector v loses W
+give_and_take(&v, 4);
+println!("{}", v2[0]);
+```
+
+Whole exercise kinda sucks. Unnecessarily confusing - "ignore what you just learned, what would happen here?" I hate this kind of exercises.
