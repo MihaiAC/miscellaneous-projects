@@ -30,5 +30,54 @@ Status endpoint: `curl http://localhost:9000/basic_status`
 `nginx -h` -> help, most useful commands
 `nginx -t` -> test current configuration;
 `docker logs nginx-oss` -> general see logs Docker
+`nginx -s reload` -> reload server after you made some changes to conf
 
+## Nginx basics workshop
+### Lab 2
+`$uri` = variable that returns the request URI path;
+Other special variables: `$remote_addr, $server_addr, $upstream_addr, $connection, $scheme, $host, $request, $args, $request_method, $http_user_agent, $request_id, $time_local, $nginx_version, $pid`
 
+How to declare different routes with `location /tea {}`
+
+Controlling what location you get with the Host header (in curl at least).
+
+Directory browsing:
+```nginx
+    location /browse {                   # new URL path
+    
+        alias /usr/share/nginx/html;     # Browse this folder
+        index index.html;                # Use this file, but if it does *not* exist
+        autoindex on;                    # Perform directory/file browsing
+    }
+```
+
+Two main types of logs to have in mind:
+- error.log -> contains NGINX binary start/stop/reload messages, NGINX version and binary details, networking | configuration | linux system errors;
+- access.log -> where the HTTP request/response metadata is recorded; best practice to have separate access logs for each website/server block;
+  
+Example access log format config:
+```nginx
+log_format main_ext 'remote_addr="$remote_addr", '
+
+					'[time_local=$time_local], '
+					
+					'request="$request", '
+					
+					'status="$status", '
+					
+					'http_referer="$http_referer", '
+					
+					'body_bytes_sent="$body_bytes_sent", '
+					
+					'Host="$host", '
+					
+					'sn="$server_name", '
+					
+					'request_time=$request_time, '
+					
+					'http_user_agent="$http_user_agent", '
+					
+					'http_x_forwarded_for="$http_x_forwarded_for", '
+					
+					'request_length="$request_length", ';
+```
