@@ -1,10 +1,14 @@
 const { app, BrowserWindow } = require("electron");
+const path = require("node:path");
 
 // Loads index.html into a BrowserWindow instance.
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
   win.loadFile("index.html");

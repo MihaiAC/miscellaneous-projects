@@ -28,3 +28,36 @@ In Electron, each window -> local/remote web page.
 Launch your window when the app is ready with
 `app.whenReady().then((...etc...))`
 
+### Preload scripts
+Electron's main process = Node.js env that has full OS access.
+On top of Electron modules, can access Node.js builtins + npm packages.
+Renderer processes run web pages and do not run Node.js by default for security reasons.
+To bridge different process types together => preload script.
+
+A preload script **has access to HTML DOM + limited subset of Node.js, Electron APIs.**
+Preload scripts are also sandboxed. They have access to:
+- Electron modules: renderer process modules;
+- Node.js modules: events, timers, url;
+- Polyfilled globals: Buffer, process, clearImmediate, setImmediate.
+Preload scripts are injected before a web page loads.
+
+
+#### Communicating between processes
+Main and renderer processes have distinct responsibilities, are not interchangeable.
+-> Node.js API cannot be accessed from the renderer process;
+-> HTML DOM cannot be accessed from the main process;
+Interprocess comm = IPC
+`ipcMain`, `ipcRenderer`
+
+To send a message from web page to main process:
+- set up a main process handler with `ipcMain.handle`;
+- expose a function that calls `ipcRenderer.invoke` to trigger the handler in your preload script;
+```
+[ Renderer process ]
+ ↓  calls window.versions.ping()
+[ Preload script ]
+ ↓  uses ipcRenderer.invoke('ping')
+[ Main process ]
+ ↓  ipcMain.handle('ping', () => return 'pong')
+[ Back to renderer ]
+```
