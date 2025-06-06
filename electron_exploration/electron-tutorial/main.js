@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("node:path");
 
 // Loads index.html into a BrowserWindow instance.
@@ -16,6 +16,7 @@ const createWindow = () => {
 
 // Create window when the app is ready.
 app.whenReady().then(() => {
+  ipcMain.handle("ping", () => "pong");
   createWindow();
 });
 
