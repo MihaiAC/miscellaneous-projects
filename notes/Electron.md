@@ -61,3 +61,11 @@ To send a message from web page to main process:
  ↓  ipcMain.handle('ping', () => return 'pong')
 [ Back to renderer ]
 ```
+
+### Packaging the app
+```
+npm install --save-dev @electron-forge/cli
+npx electron-forge import
+
+npm run make #after installing rpm
+```
