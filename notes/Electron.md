@@ -69,3 +69,26 @@ npx electron-forge import
 
 npm run make #after installing rpm
 ```
+
+### Performance
+Profiling a "require":
+`node --cpu-prof --heap-prof -e "require('request')"` + chrome developer tools
+1. Carefully consider what modules you are installing:
+	1. Size of dependencies.
+	2. How expensive is importing the module (e.g: reading a huge JSON file).
+	3. How expensive is it for the package to perform the action(s) we're interested in.
+2. Stagger imports. Loading everything up top is not a good idea.
+   e.g: Code first loads the text, then the highlighting and other bells and whistles
+3. Don't block main thread + UI thread:
+	1. CPU-heavy => worker threads or spawn a dedicated process.
+	2. Avoid sync IPC (main and worker wait for one another => UI freezes) and `@electron/remote` (sync IPC to let renderer access main process APIs) as much as possible.
+	3. No blocking I/O in main process.
+4. Don't block the renderer process.
+	1. `requestIdleCallback()` -> queue up small tasks as soon as the process enters an idle period; (無為 callback :P)
+	2. Web workers, again.
+5. Unnecessary polyfills (caniuse.com)
+6. Unnecessary network requests.
+	1. Bundle things instead of downloading them.
+	2. Ideally - app shouldn't require the internet.
+7. Bundle code.
+8. Don't build a menu when you don't need one (`Menu.setApplicationMenu(null)`).
