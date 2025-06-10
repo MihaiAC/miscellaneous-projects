@@ -92,3 +92,42 @@ Profiling a "require":
 	2. Ideally - app shouldn't require the internet.
 7. Bundle code.
 8. Don't build a menu when you don't need one (`Menu.setApplicationMenu(null)`).
+
+### Security
+1. Use https, wss, ftps, etc. D'OH.
+2. Do not enable Node.js integration for remote content (XSS danger).
+3. Do not disable context isolation.
+4. Enable process sandboxing (the thing I have to do anyway every time I run an Electron app on Ubuntu).
+5. ????? Electron automatically approves all permission requests unless you configure a custom handler.
+6. `webSecurity` - what does it do? enforces CORS, blocks loading mixed content (http inside of https??), restricts access to local files from remote content, blocks iframes from accessing parent content unless same origin.
+   
+   Http inside https = you're on a https page and it's trying to load things by http => mixed content.
+7. Can define a CSP (content security policy).
+8. `allowRunningInsecureContent` -> why is it even an option? hmm actually nvm, I have an idea why.
+9. Do not enable experimental features or "blink" features.
+10. Do not `allowpopups` for WebViews - do it only if needed (window opening another window basically).
+11. Disable or limit navigation with `will-navigate` handler.
+12. Declare a window open handler + deny most requests.
+13. Careful with `shell.openExternal`.
+14. Validate the sender of all IPC messages. 
+    Possible attack vectors here:
+    - compromised renderer through malicious extension / untrusted content;
+    - no access control = privilege escalation;
+    - malicious preload/injected JS;
+15. Do not use `file://` but use a custom `app://` protocol. If you use file, attacker can access everything on the system. With custom, you define exactly what gets loaded + sanitize for '../' etc. Use `protocol.handle(scheme, handler)`
+16. Some Electron features you don't need can be disabled ([fuses](https://www.electronjs.org/docs/latest/tutorial/fuses))
+17. Do not expose Electron APIs to untrusted web content in preload scripts.
+```js
+// Bad
+contextBridge.exposeInMainWorld('electronAPI', {  on: ipcRenderer.on})
+
+// Also bad
+contextBridge.exposeInMainWorld('electronAPI', {  onUpdateCounter: (callback) => ipcRenderer.on('update-counter', callback)})
+
+// Good
+contextBridge.exposeInMainWorld('electronAPI', {  onUpdateCounter: (callback) => ipcRenderer.on('update-counter', (_event, value) => callback(value))})
+```
+The idea here is to prevent access to event. Just pass value to the callback.
+Way to control the data that hits the callback (may still be malicious if not careful).
+First example allows access to ipcRenderer.
+Second example allows arbitrary event execution (?).
