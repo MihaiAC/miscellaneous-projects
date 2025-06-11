@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>USB Devices</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        padding: 20px;
+      }
+      h1 {
+        color: #111;
+      }
+      #usb-list {
+        list-style-type: none;
+        padding: 0;
+      }
+      #usb-list li {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 10px 15px;
+        margin-bottom: 8px;
+        border-radius: 4px;
+      }
+      .product {
+        font-weight: bold;
+      }
+      .manufacturer {
+        color: #555;
+      }
+      .ids {
+        font-family: monospace;
+        color: #888;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Connected USB Devices</h1>
+    <ul id="usb-list">
+      <li>Loading...</li>
+    </ul>
+
+    <script>
+      const list = document.getElementById("usb-list");
+
+      // Clear the "Loading..." message
+      list.innerHTML = "";
+
+      window.usbAPI
+        .getDevices()
+        .then((devices) => {
+          if (devices.length === 0) {
+            const item = document.createElement("li");
+            item.textContent = "No USB devices found.";
+            list.appendChild(item);
+            return;
+          }
+
+          devices.forEach((d) => {
+            const item = document.createElement("li");
+
+            // Format the Vendor and Product IDs to be 4-digit hex strings
+            const vid = d.vendorId.toString(16).padStart(4, "0");
+            const pid = d.productId.toString(16).padStart(4, "0");
+
+            // Create a much more readable format
+            item.innerHTML = `
+              <span class="product">${d.product}</span>
+              <span class="manufacturer">by ${d.manufacturer}</span>
+              <br>
+              <span class="ids">VID: ${vid} | PID: ${pid}</span>
+            `;
+
+            list.appendChild(item);
+          });
+        })
+        .catch((error) => {
+          console.error("Failed to get USB devices:", error);
+          const item = document.createElement("li");
+          item.textContent =
+            "Error fetching USB devices. See console for details.";
+          item.style.color = "red";
+          list.appendChild(item);
+        });
+    </script>
+  </body>
+</html>
