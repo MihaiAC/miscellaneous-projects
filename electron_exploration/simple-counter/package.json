@@ -1,32 +1,23 @@
 {
   "name": "counter-app",
   "version": "1.0.0",
-  "description": "Floating counter",
-  "main": "index.js",
-  "author": "MihaiAC",
-  "scripts": {
-    "start": "electron .",
-    "dist": "electron-builder"
+  "description": "A simple on-screen counter",
+  "author": {
+    "name": "MihaiAC",
+    "email": "you@example.com"
   },
+  "homepage": "https://github.com/MihaiAC/miscellaneous-projects/tree/master/electron_exploration/simple-counter",
   "build": {
-    "appId": "com.yourname.counter",
+    "appId": "com.MihaiAC.counterapp",
     "productName": "CounterApp",
-    "files": [
-      "**/*"
-    ],
+    "files": ["**/*"],
     "directories": {
       "buildResources": "buildResources"
     },
     "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ],
-      "icon": "icon.png"
+      "target": ["deb"],
+      "maintainer": "MihaiAC <you@example.com>",
+      "icon": "buildResources/icons"
     }
-  },
-  "devDependencies": {
-    "electron": "^29.0.0",
-    "electron-builder": "^24.13.3"
   }
 }
