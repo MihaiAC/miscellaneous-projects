@@ -1,8 +1,12 @@
 let count = 0;
-const countEl = document.getElementById("count");
-const button = document.getElementById("increment");
+const counterEl = document.getElementById("counter");
 
-button.addEventListener("click", () => {
+function update() {
+  counterEl.textContent = count;
+}
+
+// Listen for the global shortcut event
+window.electronAPI.onIncrement(() => {
   count++;
-  countEl.textContent = count;
+  update();
 });

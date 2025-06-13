@@ -1,10 +1,16 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain, globalShortcut } = require("electron");
 const path = require("path");
 
+let win;
+
 function createWindow() {
-  const win = new BrowserWindow({
-    width: 400,
-    height: 300,
+  win = new BrowserWindow({
+    width: 200,
+    height: 150,
+    transparent: true,
+    frame: false,
+    alwaysOnTop: true,
+    resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
@@ -13,4 +19,26 @@ function createWindow() {
   win.loadFile("index.html");
 }
 
-app.whenReady().then(createWindow);
+// Register global shortcuts after app is ready
+app.whenReady().then(() => {
+  createWindow();
+
+  // Increment
+  globalShortcut.register("Ctrl+Alt+I", () => {
+    if (win && !win.isDestroyed()) {
+      win.webContents.send("increment");
+    }
+  });
+
+  // Close window
+  globalShortcut.register("Ctrl+Alt+Q", () => {
+    if (win && !win.isDestroyed()) {
+      win.close();
+    }
+  });
+});
+
+// Clean up
+app.on("will-quit", () => {
+  globalShortcut.unregisterAll();
+});

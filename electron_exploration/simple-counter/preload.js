@@ -1,3 +1,5 @@
-const { contextBridge } = require("electron");
+const { contextBridge, ipcRenderer } = require("electron");
 
-contextBridge.exposeInMainWorld("api", {});
+contextBridge.exposeInMainWorld("electronAPI", {
+  onIncrement: (cb) => ipcRenderer.on("increment", cb),
+});
