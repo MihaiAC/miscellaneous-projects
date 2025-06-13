@@ -30,6 +30,13 @@ app.whenReady().then(() => {
     }
   });
 
+  // Reset counter
+  globalShortcut.register("Ctrl+Alt+R", () => {
+    if (win && !win.isDestroyed()) {
+      win.webContents.send("reset");
+    }
+  });
+
   // Close window
   globalShortcut.register("Ctrl+Alt+Q", () => {
     if (win && !win.isDestroyed()) {

@@ -10,3 +10,8 @@ window.electronAPI.onIncrement(() => {
   count++;
   update();
 });
+
+window.electronAPI.onReset(() => {
+  count = 0;
+  update();
+});
