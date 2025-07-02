@@ -84,3 +84,43 @@ Calculation methods:
 - Average of all session windows
 - Maximum of all session windows
 
+
+**Detecting when page is fully loaded**
+- `DomContentLoaded` = triggered when the HTML is fully loaded and parsed, without waiting for CSS, images, iframes;
+- `load` = triggered when the entire page + all dependent resources have finished loading;
+
+**`PerformanceObserver`** = way to monitor resource and navigation events.
+https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver
+
+**Determining if a resource hit the cache** = `transferSize` field is 0;
+If `transferSize != 0` but `encodedBodySize=0` => browser asked the server, server replied with "your cached version is fresh". 
+
+**BFC** = Browser Back/Forward Cache = memory cache that saves the entire page in memory =>  can measure timing metrics on this too (can recognise it with an on 'pageshow' event trigger).
+
+Could also add event listeners to routers and measure how long "navigation" takes in an SPA.
+
+### Error data collection
+**Resource loading errors** = when an external resource failes to load (images, stylsheets, scripts, fonts, etc.)
+
+Can add an event listener for errors and just use e.target.src or e.target.href to decide if it's a resource loading thing.
+
+**Javascript errors** = errors that occur during script execution
+`window.onerror(msg, url, line, column, error)`
+
+**Promise errors** = when a promise rejection is not handled with try-catch.
+`window.addEventListener('unhandledrejection', e) => {...}`
+Good for API call failures for instance.
+
+**Sourcemap** - could restore minified error location with the `source-map` package in Node environments.
+
+**Framework-specific** error monitoring.
+
+### Behavior data collection
+Number of page views, unique visitors
+Page stay duration
+Page access depth = how far they scroll?
+Monitoring mouse clicks
+Page navigation
+
+
+
