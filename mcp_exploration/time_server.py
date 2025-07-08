@@ -11,22 +11,36 @@ from datetime import timezone, datetime
 
 class TimeMCPServer:
     def __init__(self):
+        # Using a dispatch table (dictionary) is a clean, scalable way to map
+        # method names to the functions that handle them. It avoids long if/elif/else chains.
+        self.method_handlers = {
+            "initialize": self.handle_initialize,
+            "tools/list": self.handle_tools_list,
+            "tools/call": self.handle_tools_call,
+        }
+        # A dispatch table for tools makes it easy to add new tool functions.
+        self.tool_handlers = {
+            "get_time": self.get_time,
+        }
         self.tools = {
             "get_time": {
-                "name": "get_time",
-                "description": "Get current time in various formats and timezones",
-                "inputSchema": {
-                    "type": "object",
-                    "properties": {
-                        "timezone": {
-                            "type": "string",
-                            "description": "Timezone (e.g., 'UTC', 'US/Eastern', 'Europe/London')",
-                            "default": "UTC",
-                        },
-                        "format": {
-                            "type": "string",
-                            "description": "Time format ('iso', 'human', 'unix')",
-                            "default": "human",
+                "type": "function",
+                "function": {
+                    "name": "get_time",
+                    "description": "Get current time in various formats and timezones",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "timezone": {
+                                "type": "string",
+                                "description": "Timezone (e.g., 'UTC', 'US/Eastern', 'Europe/London')",
+                                "default": "UTC",
+                            },
+                            "format": {
+                                "type": "string",
+                                "description": "Time format ('iso', 'human', 'unix')",
+                                "default": "human",
+                            },
                         },
                     },
                 },
@@ -47,10 +61,11 @@ class TimeMCPServer:
         tool_name = params.get("name")
         args = params.get("arguments", {})
 
-        if tool_name == "get_time":
-            return await self.get_time(args)
-        else:
+        handler = self.tool_handlers.get(tool_name)
+        if not handler:
             raise ValueError(f"Unknown tool: {tool_name}")
+
+        return await handler(args)
 
     async def get_time(self, args):
         timezone_name = args.get("timezone", "UTC")
@@ -81,58 +96,71 @@ class TimeMCPServer:
             }
         except Exception as exc:
             return {
-                "content": [{"type": "text", "text": f"Error getting time: {str(e)}"}],
+                "content": [
+                    {"type": "text", "text": f"Error getting time: {str(exc)}"}
+                ],
                 "isError": True,
             }
 
     async def handle_message(self, message):
         try:
+            msg_id = None
             data = json.loads(message)
             method = data.get("method")
             params = data.get("params", {})
             msg_id = data.get("id")
 
-            if method == "initialize":
-                result = await self.handle_initialize(params)
-            elif method == "tools/list":
-                result = await self.handle_tools_list(params)
-            elif method == "tools/call":
-                result = await self.handle_tools_call(params)
-            else:
+            # Look up the handler function from our dispatch table.
+            handler = self.method_handlers.get(method)
+            if not handler:
                 raise ValueError(f"Unknown method: {method}")
 
+            result = await handler(params)
             return json.dumps({"jsonrpc": "2.0", "id": msg_id, "result": result})
         except Exception as exc:
             return json.dumps(
                 {
                     "jsonrpc": "2.0",
-                    "id": data.get("id") if "data" in locals() else None,
+                    "id": msg_id,
                     "error": {"code": -32603, "message": str(exc)},
                 }
             )
+
+    async def handle_connection(self, reader, writer):
+        addr = writer.get_extra_info("peername")
+        print(f"Received connection from {addr}", file=sys.stderr)
+        try:
+            while True:
+                line = await reader.readline()
+
+                if not line:
+                    break
+
+                response = await self.handle_message(line.decode().strip())
+                writer.write(f"{response}\n".encode("utf-8"))
+                await writer.drain()
+        finally:
+            print(f"Closed connection from {addr}", file=sys.stderr)
+            writer.close()
+            await writer.wait_closed()
 
     async def run(self):
         print("Time MCP server starting...", file=sys.stderr)
         while True:
             try:
-                line = await asyncio.get_event_loop().run_in_executor(
-                    None, sys.stdin.readline
+                server = await asyncio.start_server(
+                    self.handle_connection, "0.0.0.0", 8888
                 )
 
-                if not line:
-                    break
-
-                line = line.strip()
-
-                if line:
-                    response = await self.handle_message(line)
-                    print(response, flush=True)
-
-            except KeyboardInterrupt:
-                break
+                # For this simple server, we can assume it binds to one address.
+                addr = server.sockets[0].getsockname()
+                print(f"Serving on {addr!r}", file=sys.stderr)
+                async with server:
+                    await server.serve_forever()
 
             except Exception as exc:
                 print(f"Error: {exc}", file=sys.stderr)
+                break
 
 
 if __name__ == "__main__":
