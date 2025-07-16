@@ -4,6 +4,6 @@ Attempting to create a commit in which a change is registered by Git, but is not
 
 ---
 
-**Will start to experiment with this line.**
+**Will start to experiment with this line.**   
 
 ---
