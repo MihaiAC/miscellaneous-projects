@@ -33,4 +33,9 @@ Go to commit window -> Ctrl+S -> Search pattern -> Voila!
 `/` , that's it, similar to vim
 
 ### Bisect
-Press `b` in the commit window.
+Press `b` in the commit window + you must already know a bad commit and a good commit. Search for them and mark them as such.
+
+### Re-order commits
+In the commit window:
+- `Ctrl+K` = move commit up;
+- `Ctrl+L` = move commit down;
