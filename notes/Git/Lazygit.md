@@ -39,3 +39,6 @@ Press `b` in the commit window + you must already know a bad commit and a good c
 In the commit window:
 - `Ctrl+K` = move commit up;
 - `Ctrl+L` = move commit down;
+
+### Editing an old commit
+https://github.com/jesseduffield/lazygit/wiki/Interactive-Rebasing
