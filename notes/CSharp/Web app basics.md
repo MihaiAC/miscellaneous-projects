@@ -1,4 +1,4 @@
-**Nomenclature:**
+### Terms
 - Solution = `.sln`, references to projects, build order, configs;
 - Project = `.csproj` = buildable unit inside a solution; code, resources, dependencies, build instructions;
 - Controller = class handling HTTP requests;
@@ -6,7 +6,7 @@
 - Domain = pure business logic + Entities, Services, Repositories, etc.
 - DbContext = part of Entity Framework Core (ORM); CRUD ops on entities;
 
-**Creating a project:**
+### Creating a project from cmd
 `dotnet new list` = all available things we can create;
 `dotnet new sln` = create Solution;
 `dotnet new webapi -n API -controllers` = create a new api named "API" using the classic MVC;
@@ -19,4 +19,8 @@
 Installing Entity Framework Core: https://www.nuget.org/packages/dotnet-ef
 Initial migration: `dotnet ef migrations add InitialCreate -p .\Persistence\ -s API`
 Creating the DB:  `dotnet ef database update -p Persistence -s API`
+
+### Packages used so far
+- MediatR for mediators between API Controller and persistence layer;
+- AutoMapper;
 
