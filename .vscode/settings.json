@@ -93,4 +93,6 @@
     "*.s3db": "${capture}.${extname}-*",
   },
   "git.openRepositoryInParentFolders": "always",
+  "explorer.confirmDragAndDrop": false,
+  "haskell.manageHLS": "GHCup",
 }

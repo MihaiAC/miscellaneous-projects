@@ -1,58 +1,29 @@
 import Graphics.UI.GLUT
 import Graphics.Rendering.OpenGL
 import Control.Monad
-import Data.Complex -- we are using complex numbers 
---some functions included in Data.Complex: x :+ y = x +yi, magnitude z = sqrt ((Re z)^2 + (Im z)^2)).
+import Data.Complex 
+import Data.Word (Word8)
+import Codec.Picture (PixelRGBA8(..), generateImage, savePngImage, DynamicImage(ImageRGBA8))
 
  
  ----------------------Settings-------------------------------------------------------------------------------------------------------------------------------------------------------------
-type Saturation = GLfloat
-shsv = 0.8 :: Saturation -- controls the saturation of the colors used + is included in the interval [0,1]
-
-type ValueH = GLfloat
-valueH = 1 :: ValueH -- value that influences the outcome of the coloring + is included in the interval [0,1]
-
-type Chroma = GLfloat
-chroma = shsv * valueH -- the chroma is calculated as the product of the saturation and the value
-
-diff = valueH - chroma -- it's used to smooth out the colors
-
-type Smoothcolor = GLfloat -- HSV value that will be converted to RGB
+type Smoothcolor = GLfloat -- smooth coloring value passed to the coloring function
 
 maxiter = 1000 :: Int -- maximum number of iterations - the bigger it is, the clearer the image obtained, but the program will render the image a lot slower.
 constant = 0.32 :+ 0.42 :: Complex GLfloat --constant that will directly influence the formula used for generating the image - we will obtain different fractals for different constants
 bound = 20 :: GLfloat -- the constant that decides when a value "escapes".
-nx = 1.5 :: GLfloat -- controls the zoom of the image as explained before isJulia
+nx = 2.25 :: GLfloat -- horizontal zoom (fractal x range: -nx..nx)
+ny = 1.5  :: GLfloat -- vertical zoom   (fractal y range: -ny..ny)
 
-wSize = Size 700 700 -- controls the size of the window
-width = 1000 -- controls the width of the image
-height = 1000 -- controls the height of the image
-wxh = (fromIntegral width) * (fromIntegral height) -- constant we'll be needing in our calculations.
-
+wSize = Size 1200 800 -- controls the size of the window
+width = 600 -- image half-width 
+height = 400 --image half-height 
 --We need to adjust the width and height of certain fractals in order to center the image.
 valuewl = 0 :: Int
 valuewr = 0 :: Int
 valuehu = 0 :: Int
 valuehd = 0 :: Int
 
-red1 = 0.3 :: GLfloat
-green1 = 1.3 :: GLfloat
-blue1 = 1 :: GLfloat 
-red2 = 1 :: GLfloat
-green2 = 1 :: GLfloat
-blue2 = 1 :: GLfloat
-red3 = 1 :: GLfloat
-green3 = 1 :: GLfloat
-blue3 = 1 :: GLfloat
-red4 = 1 :: GLfloat
-green4 = 1 :: GLfloat
-blue4 = 1 :: GLfloat
-red5 = 1 :: GLfloat
-green5 = 1 :: GLfloat
-blue5 = 1 :: GLfloat
-red6 = 1 :: GLfloat
-green6 = 1 :: GLfloat
-blue6 = 1 :: GLfloat -- these variables allow us a greater freedom in coloring our fractal - must be bigger than 0, preferrably in the interval [0..1]
 --Selects the function used to do the iterations.
 function :: Complex GLfloat -> Complex GLfloat
 function = f1
@@ -90,7 +61,8 @@ g6 z = sin z
 
 g6' :: Complex GLfloat -> Complex GLfloat
 g6' z = cos z
---f6 creates two vertical "lines"
+
+--f6 creates two vertical fractals
 f6 :: Complex GLfloat -> Complex GLfloat
 f6 z | magnitude (cos z) > 0.0001 = z - ((g6 z) / (g6' z))
      | otherwise = f1 z
@@ -114,10 +86,12 @@ f9 z = 1 + c1f9 * z ^ 5
 ----------------------OpenGL stuff----------------------------------------------------------------------------------------------------------------------------------------------------------
 main :: IO ()
 main = do
+  saveImage   -- saves fractal.png 
   (_progName, _args) <- getArgsAndInitialize
-  _window <- createWindow "(Not Responding) (Not Responding) (Not Responding) Julia Set (Not Responding) (Not Responding)" --just a way to vent my frustration, ignore it
+  _window <- createWindow "Julia Set"
   keyboardMouseCallback $= Just keyboardMouse
   initialDisplayMode $= [DoubleBuffered]
+  clearColor $= Color4 0 0 0 1
   windowSize $= wSize
   reshapeCallback $= Just reshape
   displayCallback $= display
@@ -130,11 +104,9 @@ keyboardMouse _key _state _modifiers _position = return ()
 display = do
    clear [ColorBuffer]
    loadIdentity
-   scale 0.001 0.001 (0.2::GLfloat) -- rescales the picture
-   forM_ points $ \(x,y,z,t) -> -- plots the points and their color
-    preservingMatrix $ do
-      juliaa points
-      swapBuffers
+   scale (1/600 :: GLfloat) (1/400 :: GLfloat) (0.2::GLfloat)
+   juliaa points
+   swapBuffers
    flush
 
 juliaa :: [(GLfloat,GLfloat,GLfloat,Color3 GLfloat)] -> IO ()
@@ -142,8 +114,8 @@ juliaa asdf = renderPrimitive Points $ do
             mapM_ drawing asdf
                 where 
                   drawing (x,y,z,c) = do
-                  color c
-                  vertex $ Vertex3 x y z
+                    color c
+                    vertex $ Vertex3 x y z
 
 reshape :: ReshapeCallback
 reshape size = do
@@ -163,38 +135,48 @@ funcRec z n sm = if (magnitude fz < bound) then funcRec (fz) (n-1) (sm) else (Tr
 --A smooth coloring method (will work for the majority of our functions)
 -- funcRec z n sm = if ((magnitude z) < bound) then funcRec ((function z) + constant) (n-1) (sm + exp(-magnitude z)) else (True, (sm / fromIntegral (maxiter - n))) 
 
---Calculates the mod 2 of a GLfloat - the function is needed for converting HSV to RGB in coloring.
-modulo2 :: Smoothcolor -> Smoothcolor
-modulo2 x | x < 2 = x
-          | x > 2 = modulo2 (x-2) 
-
---A small transformation to further smooth our coloring.
-intermvalueX :: Smoothcolor -> GLfloat
-intermvalueX sm = chroma * (1 - abs ((modulo2 sm) - 1))
-
---Converts HSV to RGB.
---We can have fun by making one of those lines black in order to see exactly which points are affected by the coloring.
+--Orange-to-yellow gradient: R stays at 1, G oscillates between 0.5 (orange) and 1.0 (yellow), B is always 0.
 coloring :: Smoothcolor -> Color3 GLfloat
-coloring u | u == 0 = Color3 0 0 0
-           | u >= 0 && u < 1 = Color3 ((valueH) * red1) (((intermvalueX u) + diff) * green1) ((diff) * blue1)
-           | u >= 1 && u < 2 = Color3 (((intermvalueX u) + diff) * red2) ((valueH) * green2) ((diff) * blue2)
-           | u >= 2 && u < 3 = Color3 ((diff) * red3) ((valueH) * green3) (((intermvalueX u) + diff) * blue3)
-           | u >= 3 && u < 4 = Color3 ((diff) * red4) (((intermvalueX u) + diff) * green4) ((valueH) * blue4)
-           | u >= 4 && u < 5 = Color3 (((intermvalueX u) + diff) * red5) ((diff) * green5) ((valueH) * blue5)
-           | u >= 5 && u < 6 = Color3 ((valueH) * red6) ((diff) * green6) (((intermvalueX u) + diff) * blue6)
+coloring 0 = Color3 0 0 0
+coloring u = Color3 1.0 (0.5 + 0.5 * abs (sin (u * pi / 3))) 0.0
 
--- nx - bigger number => zoom out the picture, smaller => zoom in (I've done this before I discovered I could scale the picture in the OpenGL panel). A more correct name of the function would be isNotJulia, but we'll stick to this notation.
+-- nx - bigger number => zoom out the picture 
 isJulia :: Complex GLfloat -> (Bool,Smoothcolor) 
-isJulia (x :+ y) = funcRec ((nx * x / (fromIntegral width)) :+ (nx * y / (fromIntegral height))) maxiter 0
+isJulia (x :+ y) = funcRec ((nx * x / (fromIntegral width)) :+ (ny * y / (fromIntegral height))) maxiter 0
 
 -- Here we evaluate each point in the rectangle (-width, -height) (width, height) and color it if it's not in the Julia Set.
 juliaP :: [(GLfloat,GLfloat,Smoothcolor)]
-juliaP = [(x,y,snd j) | x <- [fromIntegral (-width + valuewl)..fromIntegral (width + valuewr)], y <- [fromIntegral (-height + valuehd)..fromIntegral (height + valuehu)], let j = isJulia (x :+ y), fst j]
+-- snd j > 0.05 filters out the fast-escaping far exterior, leaving only the boundary region visible.
+-- Raise the threshold to see less, lower it to see more of the outer glow.
+juliaP = [(x,y,snd j) | x <- [fromIntegral (-width + valuewl)..fromIntegral (width + valuewr)], y <- [fromIntegral (-height + valuehd)..fromIntegral (height + valuehu)], let j = isJulia (x :+ y), fst j, snd j > 0.05]
 
 --The points we have to plot and their color - "black" if the point is in the Julia Set, colored if it's not (if it escapes after a number of iterations)
 points :: [(GLfloat,GLfloat,GLfloat,Color3 GLfloat)]
 points =  [(x,y,0,(coloring (sm * 6))) | (x,y,sm) <- juliaP]
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------PNG export------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Saves a 1200x800 PNG. Non-escaped pixels (the background) get alpha=0 (transparent).
+saveImage :: IO ()
+saveImage = do
+  putStrLn "Computing fractal.png..."
+  let w = 1200 :: Int
+      h = 800  :: Int
+      toW8 :: GLfloat -> Word8
+      toW8 v = round (min 1 (max 0 v) * 255)
+      mkPixel px py =
+        let x = fromIntegral (px - w `div` 2) :: GLfloat
+            y = fromIntegral (h `div` 2 - py) :: GLfloat
+            j = isJulia (x :+ y)
+        in if fst j && snd j > 0.05
+             then let Color3 r g b = coloring (snd j * 6)
+                  in PixelRGBA8 (toW8 r) (toW8 g) (toW8 b) 255
+             else PixelRGBA8 0 0 0 0
+      img = generateImage mkPixel w h
+  savePngImage "fractal.png" (ImageRGBA8 img)
+  putStrLn "Saved fractal.png"
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ----------------------------References------------------------------------------------------------------------------------------------------------------------------------------------------
 --https://en.wikipedia.org/wiki/HSL_and_HSV                                                   - for information on how HSV works and how to convert it to RGB;
