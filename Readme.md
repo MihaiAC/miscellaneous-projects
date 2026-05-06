@@ -13,6 +13,7 @@ A repo with code from various tutorials, online courses, university assignments,
 
 ### Miscellaneous
 
+- [**rough_svgs**](/rough_svgs/) - Generating BGs for the navbar buttons of my website.
 - [**mystical_exploration**](/mystical_exploration/) - Coding using magic circles!
 - [**codeql_exploration**](/codeql_exploration/) - Exploring fundamentals of CodeQL.
 - [**bash_practice_scripts**](/bash_practice/) - Refreshing Bash basics.

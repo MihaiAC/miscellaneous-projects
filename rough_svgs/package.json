@@ -1,0 +1,17 @@
+{
+  "name": "rough-svgs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate-icons": "node generate.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "jsdom": "^29.1.1",
+    "roughjs": "^4.6.6"
+  }
+}
