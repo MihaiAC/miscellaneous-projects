@@ -15,8 +15,10 @@ for (let idx = 1; idx <= 4; idx++) {
 
   const rc = rough.svg(svg);
   const node = rc.rectangle(2, 2, 76, 26, {
-    roughness: 2.5,
-    fillWeight: 1.5,
+    roughness: 1,
+    fillWeight: 2,
+    strokeWidth: 0.5,
+    hachureAngle: 135,
     fillStyle: "hachure",
     stroke: "none",
     fill: "currentColor",
@@ -26,7 +28,7 @@ for (let idx = 1; idx <= 4; idx++) {
   svg.appendChild(node);
 
   fs.writeFileSync(
-    path.join(__dirname, `rough${idx}.svg`),
+    path.join(__dirname, `navbar-button-${idx}.svg`),
     svg.outerHTML,
     "utf8",
   );
