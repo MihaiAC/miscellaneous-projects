@@ -1,0 +1,12 @@
+[project]
+name = "canny-edge-detection"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "controlnet-aux>=0.0.10",
+    "numpy>=2.4.6",
+    "opencv-python>=4.13.0.92",
+    "rembg[gpu]>=2.0.75",
+]
