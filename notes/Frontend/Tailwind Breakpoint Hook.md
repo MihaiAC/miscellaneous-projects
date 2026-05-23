@@ -24,3 +24,14 @@ export function useBreakpoint(name: string) {
 ```
 
 Usage: `useBreakpoint('md')`
+Also, need to add this in `:root` (since apparently Tailwind doesn't auto-generate them(?)):
+```css
+:root {
+  /* Generate Tailwind breakpoints explicitly, to make useBreakpoint 
+  functional. */
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+```
