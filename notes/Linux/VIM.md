@@ -1,5 +1,8 @@
 Has to be at least the 4th try I'm trying to learn this.
-Source: https://vim-adventures.com/
+Sources: 
+- https://vim-adventures.com/
+- https://www.vim-hero.com/ (much better than the above)
+- vimtutor (pretty good as well)
 ### Movements
 `h, j` = Left, Down
 `k, l` = Up, Right
@@ -107,11 +110,30 @@ Without the g, you would remove only the first occurrence on each line.
 `va{`
 
 
+## VimHero
 
+Covering some gaps in my knowledge + having a little bit of fun.
+### Words
+Word = sequence of letters, digits, underscores separated by white space
+! Also formed when switching between the above and special characters. e.g:
+```
+test1234 -> 1 word
+snake_case123 -> 1 word again
+alpha#$@ -> 2 words
+Alice-->Bob -> 3 words
+test@example.com -> 5 words
+```
 
+WORD = anything between spaces is a word (`W`, `E`, `B`)
+### Insert at the beginning / end of line
+`I` = insert mode at the beginning of line
+`A` = insert mode at the end of line
 
+### Opening new line
+`O` = new line above the cursor
 
-
+### Small edits
+`s` = delete the letter under your cursor + enter insert mode
 
 
 
