@@ -31,3 +31,4 @@ A repo with code from various tutorials, online courses, university assignments,
 ### Frontend
 
 - [**svelte_exploration**](/svelte_exploration/) - Svelte getting started - didn't like it so I didn't persevere.
+- [**ember_exploration**](/ember_exploration/) - Going through the official EmberJS tutorial
