@@ -103,4 +103,13 @@
   "git.openRepositoryInParentFolders": "always",
   "explorer.confirmDragAndDrop": false,
   "haskell.manageHLS": "GHCup",
+  "[glimmer-js]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.foldingStrategy": "indentation",
+  },
+  "[glimmer-ts]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.foldingStrategy": "indentation",
+  },
+  "prettier.documentSelectors": ["**/*.gts", "**/*.gjs"],
 }
