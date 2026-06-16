@@ -1,8 +1,8 @@
 import { LinkTo } from '@ember/routing';
+import Jumbo from 'super-rentals/components/jumbo';
 
 <template>
-  <div class="jumbo">
-    <div class="right tomster"></div>
+  <Jumbo>
     <h2>Contact Us</h2>
     <p>
       Super Rentals Representatives would love to help you<br />
@@ -20,5 +20,5 @@ import { LinkTo } from '@ember/routing';
       >superrentalsrep@emberjs.com</a>
     </address>
     <LinkTo @route="about" class="button">About</LinkTo>
-  </div>
+  </Jumbo>
 </template>
