@@ -1,3 +1,5 @@
+import { LinkTo } from '@ember/routing';
+
 <template>
   <div class="jumbo">
     <div class="right tomster"></div>
@@ -8,4 +10,5 @@
       traveling AND building Ember applications.
     </p>
   </div>
+  <LinkTo @route="about" class="button">About us</LinkTo>
 </template>
