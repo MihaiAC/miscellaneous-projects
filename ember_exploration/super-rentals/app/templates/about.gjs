@@ -1,7 +1,9 @@
 import { LinkTo } from '@ember/routing';
 import Jumbo from 'super-rentals/components/jumbo';
+import NavBar from 'super-rentals/components/nav-bar';
 
 <template>
+  <NavBar />
   <Jumbo>
     <h2>About Super Rentals</h2>
     <p>
