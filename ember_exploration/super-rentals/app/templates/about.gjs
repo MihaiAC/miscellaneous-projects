@@ -9,6 +9,6 @@ import { LinkTo } from '@ember/routing';
       Ember. By building a property rental site, we can simultaneously imagine
       traveling AND building Ember applications.
     </p>
+    <LinkTo @route="contact" class="button">Contact Us</LinkTo>
   </div>
-  <LinkTo @route="about" class="button">About us</LinkTo>
 </template>
