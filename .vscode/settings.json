@@ -111,8 +111,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.foldingStrategy": "indentation",
   },
-  "prettier.documentSelectors": [
-    "**/*.gts",
-    "**/*.gjs"
-  ],
+  "prettier.documentSelectors": ["**/*.gts", "**/*.gjs"],
+  "workbench.browser.openLocalhostLinks": false,
 }
