@@ -16,3 +16,6 @@
 
 # broccoli-debug
 /DEBUG/
+
+# .gitignore environment.js
+environment.js
