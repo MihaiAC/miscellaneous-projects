@@ -1,5 +1,11 @@
+import RentalImage from 'super-rentals/components/rental/image';
+
 <template>
   <article class="rental">
+    <RentalImage
+      src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg"
+      alt="A picture of Grand Old Mansion"
+    />
     <div class="details">
       <h3>Grand Old Mansion</h3>
       <div class="detail owner">
