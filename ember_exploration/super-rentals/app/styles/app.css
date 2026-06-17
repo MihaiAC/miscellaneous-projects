@@ -481,3 +481,9 @@ p {
 }
 
 /* stylelint-enable no-descending-specificity, media-feature-range-notation */
+
+#ember-testing-container,
+#ember-testing {
+  position: absolute;
+  left: -10000px;
+}
