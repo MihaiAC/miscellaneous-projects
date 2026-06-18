@@ -13,7 +13,9 @@ import ShareButton from 'super-rentals/components/share-button';
       @text="Check out {{@rental.title}} on Super Rentals!"
       @hashtags="vacation,travel,authentic,blessed,superrentals"
       @via="emberjs"
-    />
+    >
+      Share on Twitter
+    </ShareButton>
   </Jumbo>
 
   <article class="rental detailed">
